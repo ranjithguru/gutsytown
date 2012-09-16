@@ -1,0 +1,109 @@
+ <style>
+ .winnerheading{
+    width:100%;
+      font-size: 15px;
+	  height:25px;
+	  float: left;
+      background:red;
+	  color: white;
+      font-weight:bolder;
+	  font-family:cursive;
+	  padding-left:15px;
+	}
+.subheadings{
+	font-family:cursive;
+	background:transparent url(public/stylesheets/images/menu.png) repeat-x top left;
+	width:100%;
+	display:block;
+	float:left;
+	color:#00A2E8;
+	font-size: 12px;
+	padding: 1px;
+	}
+	
+	
+.topRanks{
+width: 150px;
+height: 40px;
+border: 4px solid #00A2E8;
+background-color: white;
+}
+.image{
+width:20px;
+height:30px;
+margin:5px;
+float: left;
+}
+.name{
+width:100px;
+height:17px;
+float: left;
+padding: 1px;
+font-family:monospace;
+font-size: 13px;
+font-weight: bolder;
+float: left;
+overflow: hidden;
+color: #db0000;
+
+}
+.points{
+width:100px;
+height:15px;
+font-family:monospace;
+padding: 1px;
+float: left;
+overflow: hidden;
+color:#483D8B;
+font-weight: bold;
+font-size: 11px;
+}
+	
+ </style>
+ 
+ 
+ 
+ <div id="rightcolumn">
+<!--                   <div class="winnerheading" style="font-size: 14px;padding: 1px;">Gutsy Winners</div> <br/> -->
+<!--                   <div class="subheadings">Gutsy Indian Guy</div><br/> -->
+<!--                    <img src="public/images/male.jpg" alt="gutsyguy" class="image"><br/> -->
+<!--                   <div class="recentpost" style="font-size: 12px;padding: 0px;">${session.gutsyguy}   ${session.gutsyguyp} points</div><br/> -->
+<!--                    <div class='headings' style="font-size: 12px;padding: 1px;"><span>Gutsy Indian Girl</span></div><br/> -->
+<!--                 <img src="public/images/female.jpg" alt="gutsygirl" class="image"><br/> -->
+<!--                 <div class="recentpost" style="font-size: 12px;padding: 0px;">${session.gutsygirl} ${session.gutsygirlp} points</div><br/> -->
+               
+    <div><span class="subheadings">Top 3 Gutsy Guys</span><br/>
+     <div class="topRanks">
+                      <img class="image" src="/public/images/number1.jpg">
+                      <label class="name">${session.guy1}</label>
+                      <label class="points">Points:${session.guy1p}</label>
+     </div>
+      <div class="topRanks">
+                    <img class="image" src="/public/images/number2.jpg">
+                    <label class="name">${session.guy2}</label>
+                    <label class="points">Points:${session.guy2p}</label>
+       </div>
+        <div class="topRanks">
+               <img class="image" src="/public/images/number3.jpg">
+                <label class="name">${session.guy3}</label>
+                <label class="points">Points:${session.guy3p}</label>
+         </div>
+                   
+                      <span class="subheadings">Top 3 Gutsy Girls</span><br/>
+                       <div class="topRanks">
+                      <img class="image" src="/public/images/number1.jpg">
+                      <label class="name">${session.girl1}</label>
+                      <label class="points">Points:${session.girl1p}</label>
+     </div>
+      <div class="topRanks">
+                    <img class="image" src="/public/images/number2.jpg">
+                    <label class="name">${session.girl2}</label>
+                    <label class="points">Points:${session.girl2p}</label>
+       </div>
+        <div class="topRanks">
+               <img class="image" src="/public/images/number3.jpg">
+                <label class="name">${session.girl3}</label>
+                <label class="points">Points:${session.girl3p}</label>
+         </div>
+                </div>
+    </div>

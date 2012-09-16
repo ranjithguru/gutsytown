@@ -1,0 +1,15 @@
+<div class="post-metadata">
+                        <span class="post-author">
+                            By ${_post.author.fullname}
+                        </span>
+                        <span class="post-date"><span>on</span>
+                            ${_post.postedAt.format('dd MMM yy')}
+                        </span>
+                        <div class="post-comments">
+                            ${_post.comments.size() ?: 'no'} 
+                            comment${_post.comments.size().pluralize()}
+                            #{if _post.comments}
+                                - latest by ${_post.comments[-1].author}
+                            #{/if}
+                        </div>
+                    </div>

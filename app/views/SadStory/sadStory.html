@@ -1,0 +1,69 @@
+#{extends 'main.html' /}
+
+ #{writeNewSadStory /}
+ <hr class="horizontalline"/>
+ #{if frontPost}
+    #{frontPostUI post:frontPost /}
+<!--comment section -->
+<hr class="horizontalline"/>
+#{commentsUI post:frontPost /}
+ <hr class="horizontalline"/>
+<h3 class="simpleheadings">Post a comment</h3>
+
+#{form @SadStory.postComment(frontPost.id)}
+#{ifErrors}
+        <p class="error">
+            All fields are required!
+        </p>
+    #{/ifErrors}
+    <p>
+        <label for="author">Your name: </label>
+        <input type="text" name="author" id="author" value="${flash.author}"/>
+    </p>
+    <p>
+        <label for="content">Your message: </label>
+        <textarea name="content" id="content">${flash.content}</textarea>
+    </p>
+    <p>
+        <input class="submit" type="submit" value="Submit your comment" />
+    </p>
+#{/form}
+<hr class="horizontalline"/>
+<!--old posts section  -->
+    #{if olderPosts}
+        <div class="older-posts">    
+            <h3>Recent Posts</h3>
+        
+            #{list items:olderPosts, as:'oldPost'}
+                <div class="post">
+                    <h2 class="post-title">
+                        <a href="@{SadStory.sadStory(oldPost.id)}">${oldPost.title}</a>
+                        %{lastPost=oldPost}%
+                    </h2>
+                     #{oldPostUiWithoutTitle post:oldPost /}
+                </div>
+            #{/list}
+        </div>
+    #{/if}
+    
+    <div>
+     #{if olderPosts}
+     
+          #{if lastPost.next()}
+         <div>
+         <a href="@{SadStory.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">More Posts</span></a> 
+         </div>
+         #{/if}
+         #{/if}
+         
+
+</div>
+#{/if}
+ 
+#{else}
+    <div class="empty">
+        There is currently nothing to read here.
+    </div>
+#{/else}
+
+

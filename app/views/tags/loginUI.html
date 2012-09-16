@@ -1,0 +1,236 @@
+   <style>
+   .loggedIn{
+  color:orange;
+   width: 400px;
+   font-size: 15px;
+   }
+   .loggedIn label{
+   font-size: 12px;
+    color: white;
+   }
+   .loggedIn a{
+    color: green;
+    padding: 10px;
+    font-size: 12px;
+   }
+   </style>
+   
+    <script  type="text/javascript">
+    
+       /* Shows the form */
+         function show(id)
+         {
+             document.getElementById(id).style.visibility= "visible";
+             document.getElementById(id).style.display= "block";
+             
+         }
+         /* Hides the form*/
+         function hide(id)
+         {
+        		 document.getElementById(id).style.visibility = "hidden";
+                 document.getElementById(id).style.display= "none";
+         }
+         
+         /* Validates the register form*/
+         function validateRegisterForm()
+         {
+         var fname=document.forms["registerForm"]["fullname"].value;
+         var em=document.forms["registerForm"]["email"].value;
+         var pass=document.forms["registerForm"]["password"].value;
+         var gen = findGender();
+         if (fname==null || fname=="")
+           {
+           alert("Please Fill Name Field");
+           document.registerForm.fullname.focus() ;
+           return false;
+           }
+
+         var atpos=em.indexOf("@");
+         var dotpos=em.lastIndexOf(".");
+         if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
+           {
+           alert("Please Enter Valid E-mail Address");
+           document.registerForm.email.focus() ;
+           return false;
+           }
+
+         if (pass==null || pass=="")
+         {
+         alert("Please Fill Password Field");
+         document.registerForm.password.focus() ;
+         return false;
+         }
+         if(gen==null ||gen==""){
+        	 alert("Please Select Your Gender");
+             return false;
+         } 
+          return true;
+         }
+         
+         /*Validates the login form */
+         function validateLoginForm(){
+             var email=document.forms["loginForm"]["loginemail"].value;
+             var password=document.forms["loginForm"]["loginpassword"].value;
+             var atpos=email.indexOf("@");
+             var dotpos=email.lastIndexOf(".");
+             if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length)
+               {
+               alert("Please Enter Valid E-mail Address");
+               document.loginForm.loginemail.focus() ;
+               return false;
+               }
+
+             if (password==null || password=="")
+             {
+             alert("Please Fill Password Field");
+             document.loginForm.loginpassword.focus() ;
+             return false;
+             }
+             return true;
+         }
+         /* login function */
+         function login(){
+        	 var xmlhttp;
+             if (window.XMLHttpRequest)
+               {// code for IE7+, Firefox, Chrome, Opera, Safari
+               xmlhttp=new XMLHttpRequest();
+               }
+             else
+               {// code for IE6, IE5
+               xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+               }
+             
+                xmlhttp.onreadystatechange=function()
+               {
+               if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                 { 
+            	  
+            	   var loginResponse =JSON.parse(xmlhttp.responseText);
+            	   if(loginResponse.loginSuccess)
+            	   {
+            		   document.forms["loginForm"]["loginemail"].value="";
+                       document.forms["loginForm"]["loginpassword"].value="";
+            	   }
+            	   document.getElementById("userArea").innerHTML=loginResponse.loggedInUser;
+                   alert(loginResponse.message);
+                 }
+               }
+             em= document.forms["loginForm"]["loginemail"].value;
+             pass= document.forms["loginForm"]["loginpassword"].value;
+                 var testObj = {email:em, password:pass};
+                 var listAction = #{jsAction @LoginAndRegister.authenticate(':email', ':password') /}
+             xmlhttp.open("GET",listAction(testObj),true);
+             xmlhttp.send();
+                }
+         
+         /* register user function*/
+         function registerUser(){
+         var xmlhttp;
+         if (window.XMLHttpRequest)
+           {// code for IE7+, Firefox, Chrome, Opera, Safari
+           xmlhttp=new XMLHttpRequest();
+           }
+         else
+           {// code for IE6, IE5
+           xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+           }
+         xmlhttp.onreadystatechange=function()
+           {
+           if (xmlhttp.readyState==4 && xmlhttp.status==200)
+             {
+              
+              var registerResponse =JSON.parse(xmlhttp.responseText);
+                if(registerResponse.registerSuccess)
+            	  {
+                	document.forms["registerForm"]["fullname"].value="";
+                    document.forms["registerForm"]["email"].value="";
+                   document.forms["registerForm"]["password"].value="";
+                   document.getElementsByName("gender").value="";
+                
+            	  }
+                	alert(registerResponse.message);
+                }
+              
+             }
+           
+         fname=document.forms["registerForm"]["fullname"].value;
+         em=document.forms["registerForm"]["email"].value;
+         pass=document.forms["registerForm"]["password"].value;
+         gen = findGender();
+             
+             var testObj = {fname:fname, em:em, pass:pass, gender:gen};
+             var listAction = #{jsAction @LoginAndRegister.register(':fname', ':em', ':pass',':gender') /}
+             
+             
+         xmlhttp.open("GET",listAction(testObj),true);
+         xmlhttp.send();
+         }
+
+         function findGender()
+         { 
+         	   var radioButtons = document.getElementsByName("gender");
+         	   for(var i = 0; i < radioButtons.length; i++)
+         	   {
+         	      if(radioButtons[i].checked)
+         	      {
+         	         return radioButtons[i].value;
+         	      }
+         	   }
+         	 
+         	   return '';
+         	}
+         
+         function logoutUser(){
+        	 var xmlhttp;
+             if (window.XMLHttpRequest)
+               {// code for IE7+, Firefox, Chrome, Opera, Safari
+               xmlhttp=new XMLHttpRequest();
+               }
+             else
+               {// code for IE6, IE5
+               xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+               }
+             xmlhttp.onreadystatechange=function()
+               {
+               if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                 {
+            	   var logoutResponse=JSON.parse(xmlhttp.responseText);
+            	     document.getElementById("userArea").innerHTML="Guest";
+                    	alert(logoutResponse.message);
+                    }
+                  
+                 }
+                 var listAction = #{jsAction @LoginAndRegister.logout() /}
+             xmlhttp.open("GET",listAction(),true);
+             xmlhttp.send();
+         }
+         
+         </script>
+ <div class="mainloginregisterblock" >
+<div class="loginregisterblock" onmouseover="show('login')" onmouseout="hide('login')">
+<span>Login</span>
+    <div  id="login" class="loginregister">
+     <form name="loginForm" action="JavaScript:login()" onsubmit="return validateLoginForm()">
+        Email<input type="email" name="loginemail" /><br/> 
+        Password<input type="password" name="loginpassword" />
+         <input class="submit" type="submit" value="Login" />
+        </form>
+ </div>
+ </div>
+ <div class="loginregisterblock" onmouseover="show('register')" onmouseout="hide('register')">
+ <span>Register<label>|</label></span>
+ <div  id="register" class="loginregister" >
+      <form name="registerForm" action="JavaScript:registerUser()" onsubmit="return validateRegisterForm()">  
+        FullName<input type="text" name="fullname" /><br/> 
+        Email<input type="email" name="email" /><br/> 
+        Password<input type="password" name="password" /><br/> 
+        <input type="radio" name="gender" value="1" > Male<br/>
+        <input type="radio" name="gender" value="2"> Female 
+         <input class="submit" type="submit" value="Register" />
+         </form>
+ </div>
+ </div>
+      <div class="loggedIn">
+    Logged in as : <label id="userArea">${session.username}</label><a href="javaScript:logoutUser()">Logout</a>
+   </div>
+ </div>

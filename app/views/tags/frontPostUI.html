@@ -1,0 +1,90 @@
+ <script  type="text/javascript">
+
+ function like(postId){
+	
+var xmlhttp;
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+ xmlhttp.onreadystatechange=function()
+{
+if (xmlhttp.readyState==4 && xmlhttp.status==200)
+  { 
+	  
+	   var likeResponse =JSON.parse(xmlhttp.responseText);
+	   document.getElementById("nooflikes").innerHTML="Total Likes : "+ likeResponse.postLikes;
+	   document.getElementById("likeme").href=null;
+  }
+}
+  var testObj = {id:postId};
+  var listAction = #{jsAction @SadStory.likeThePost(':id') /}
+xmlhttp.open("GET",listAction(testObj),true);
+xmlhttp.send();
+}
+</script>
+
+<style>
+.deletepost span{
+     width:75px;
+     font-size: 13px;
+	height:25px;
+	float: left;
+    background:#00A2E8;
+	color: white;
+   font-weight:bolder;
+	 font-family:cursive;
+	-webkit-border-radius:20px;
+    -moz-border-radius: 20px;
+  
+    border-left:1px solid black; 
+	border-right:1px solid black;
+	border-top:4px solid black;
+	border-bottom: 4px solid black;
+	padding-left:5px;
+	margin-left: 250px;
+}
+.deletepost a{
+color:#00A2E8 ;
+}
+</style>
+ <div class="post">
+        <h2 class="post-title">
+            <a href="">${_post.title}</a>
+        </h2>
+       
+        <div class="post-metadata">
+            <span class="post-author">By ${_post.author.fullname}</span>
+            <span>on</span>
+            <span class="post-date">${_post.postedAt.format('MMM dd')}</span>
+            <span class="post-comments">
+                &nbsp;|&nbsp; 
+                ${_post.comments.size() ?: 'no'} 
+                comment${_post.comments.size().pluralize()}
+                #{if _post.comments}
+                    , latest by ${_post.comments[-1].author}
+                #{/if}
+            </span>
+        </div>
+         #{if _post.postImage.get()}
+         <div><img src="@{SadStory.getPostImage(_post.id)}"/></div>
+          #{/if}
+        <div class="post-content">
+            ${_post.content.nl2br()}
+        </div>
+         <div><a class="like" id="likeme" href="javaScript:like(${_post.id})">Like</a>
+            <span class="nooflikes" id="nooflikes">Total Likes : ${_post.likes}</span>
+        
+         </div>
+          #{if session.get("userid")}
+        #{if _post.author.id==session.get("userid").toLong() ||1==session.get("userid").toLong() }
+        <div class="deletepost"><a href="@{SadStory.deletePost(_post.id)}"><span>Delete Post</span></a></div>
+         #{/if}
+        #{/if}
+
+    </div>
