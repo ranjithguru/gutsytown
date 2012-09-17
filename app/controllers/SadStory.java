@@ -24,7 +24,7 @@ public class SadStory extends Controller {
     	}
         List<Post> olderPosts = Post.find(
             "order by postedAt desc"
-        ).from(0).fetch(3);
+        ).from(0).fetch(5);
         render(frontPost, olderPosts);
     }
 	 public static void postComment(Long postId, @Required String author, @Required String content) {
@@ -45,7 +45,7 @@ public class SadStory extends Controller {
     	Post lastPost=Post.findById(lastPostId);
     	List<Post> olderPosts = Post.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
-            ).fetch(2);
+            ).fetch(5);
     	renderTemplate("app/views/SadStory/sadStory.html",frontPost, olderPosts);
     	
     }
@@ -55,7 +55,7 @@ public class SadStory extends Controller {
     	Post lastPost=Post.findById(lastPostId);
     	List<Post> olderPosts = Post.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
-            ).fetch(2);
+            ).fetch(5);
     	renderTemplate("app/views/SadStory/sadStory.html",frontPost, olderPosts);
     	
     }
