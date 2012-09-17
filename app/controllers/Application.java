@@ -101,5 +101,6 @@ public class Application extends Controller {
     List<SimpleComment> simpleCommentList = SimpleComment.find("order by postedAt desc").fetch();
     return simpleCommentList;
     }
+    
    
 }

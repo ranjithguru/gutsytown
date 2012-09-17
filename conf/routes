@@ -10,6 +10,8 @@ GET     /contact                                   Contact.contact
 GET     /nextOldPosts                              SadStory.nextOldPosts
 POST     /writeNewSadStory                          SadStory.writeNew
  GET     /gytsyWinner                               Application.gutsyGuyWinner
+ GET     /previous                                    SadStory.previousOldPosts
+ 
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

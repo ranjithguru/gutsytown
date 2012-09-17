@@ -89,7 +89,7 @@ width: 100%;
 }
 
 #contentcolumn{
-margin: 4px 4px 4px 224px; /*Margins for content column. Should be "0 right-column-width 0 left-column-width*/
+margin-left:16%; /*Margins for content column. Should be "0 right-column-width 0 left-column-width*/
 width:70%;
 float:left;
 }
@@ -98,9 +98,7 @@ float:left;
 float: left;
 width: 15%; /*Width of left column in percentage*/
 margin-left: -100%;
-padding:2px;
-border:2px solid #00A2E8;
-background:#00A2E8;
+border:5px solid #00A2E8;
 }
 
 #rightcolumn{
@@ -128,10 +126,11 @@ padding: 4px 0px;
 .headings{
 	font-family:cursive;
 	background:transparent url(images/menu.png) repeat-x top left;
-	width:80%;
+	width:100%;
 	float:left;
 	color:#00A2E8;
-	padding:4px 0px 4px 40px;
+	padding:4px 0px 4px 4px;
+	text-align: center;
 	
 }
 
@@ -151,10 +150,11 @@ padding: 4px 0px;
 	height: 30px;
 	display:block;
 	color:white;
-	padding:4px 10px 4px 30px;
 	float:left;
+	width:100%;
 	font-size:20px;
 	font-weight:bold;
+	text-align: center;
 }
 .image{
 	width:50px;
@@ -163,12 +163,13 @@ padding: 4px 0px;
 .morePosts{
 	font-family:cursive;
 	background:#00A2E8;
-	height: 25px;
-	width:120px;
+	height: 22px;
+	width:110px;
 	color:white;
 	padding:4px 4px 4px 4px;
+	padding-left:20px;
 	float:left;
-	font-size:20px;
+	font-size:15px;
 	font-weight:bold;
 	-webkit-border-radius: 30px;
     -moz-border-radius: 30px;
@@ -177,12 +178,19 @@ padding: 4px 0px;
 	border-top:4px solid black;
 	border-bottom: 4px solid black;
 }
+
+.paginatebutton{
+	float:left;
+ padding-left: 80px;
+ padding-bottom: 10px;
+}
 .horizontalline{
 	border-color:#00A2E8;
 	border-style:dashed;
 	width: 98%;
 	height:1px;
     background-color:black;
+    clear: both;
 	
 }
 .simpleheadings{
@@ -216,6 +224,8 @@ padding: 4px 0px;
 .indiancontent span{
 	color:#009900;
 }
+
+
 
 
 
@@ -294,6 +304,7 @@ padding: 4px 0px;
 
 .post .post-title a {
     font-size: 18px;
+    width:100%;
     color:	#250517;
     text-decoration: none;
     font-family:Arial, Helvetica, sans-serif;

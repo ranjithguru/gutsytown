@@ -47,15 +47,25 @@
     #{/if}
     
     <div>
+    
      #{if olderPosts}
      
-          #{if lastPost.next()}
-         <div>
-         <a href="@{SadStory.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">More Posts</span></a> 
+          #{if lastPost.previous()}
+         <div class="paginatebutton">
+         <a href="@{SadStory.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
          </div>
          #{/if}
          #{/if}
          
+          #{if olderPosts}
+     #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
+      <div class="paginatebutton">
+         <a href="@{SadStory.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         </div>
+         #{/if}
+          #{/if}
+         
+       <hr class="horizontalline"/>
 
 </div>
 #{/if}
