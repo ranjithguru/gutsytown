@@ -4,7 +4,6 @@ import java.util.List;
 
 import models.ContactComment;
 import models.Post;
-import models.SimpleComment;
 import play.mvc.Controller;
 
 public class Contact extends Controller  {

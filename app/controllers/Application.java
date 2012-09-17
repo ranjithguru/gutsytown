@@ -13,20 +13,25 @@ public class Application extends Controller {
 	 
 	
     public static void index() {
-    	
-    	setGutsyWinnerGuy();
-    	setGutsyWinnerGirl();
-    	setTopThreeGutsyGuys();
-    	setTopThreeGutsyGirls();
-    	setRecentSadPosts();
-    	 List<SimpleComment> simpleCommentList = SimpleComment.find("order by postedAt desc").fetch();
-    	 
+    	doInitialSetup();
+    	 List<IndianComment> simpleCommentList = IndianComment.find("order by postedAt desc").fetch();
         render(simpleCommentList);
     }
     
   
     
-    private static void setRecentSadPosts() {
+    private static void doInitialSetup() {
+    	setGutsyWinnerGuy();
+    	setGutsyWinnerGirl();
+    	setTopThreeGutsyGuys();
+    	setTopThreeGutsyGirls();
+    	setRecentSadPosts();
+		
+	}
+
+
+
+	private static void setRecentSadPosts() {
 		List<Post> recentPosts=SadStory.getLatestPost();
 		
 		Post post1=recentPosts.get(0);
@@ -91,14 +96,14 @@ public class Application extends Controller {
 
 
 	public static void postConstitutionComment(String author, String content) {
-    	new SimpleComment(author, content).save();
+    	new IndianComment(author, content).save();
     	index();
     }
     public static long getCount(){
-    	return SimpleComment.count();
+    	return IndianComment.count();
     }
-    public static List<SimpleComment> getSimpleCommentList(){ 
-    List<SimpleComment> simpleCommentList = SimpleComment.find("order by postedAt desc").fetch();
+    public static List<IndianComment> getSimpleCommentList(){ 
+    List<IndianComment> simpleCommentList = IndianComment.find("order by postedAt desc").fetch();
     return simpleCommentList;
     }
     

@@ -12,7 +12,7 @@ import play.data.validation.Required;
 import play.db.jpa.Blob;
 import play.mvc.Controller;
 
-public class SadStory extends Controller{
+public class SadStory extends Controller {
 	
 	public static void sadStory(Long id) {
     	Post frontPost;

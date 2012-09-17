@@ -98,7 +98,9 @@ public class LoginAndRegister extends Controller{
     	        if(isConnected()){
     	        	jsObject.addProperty("logoutSuccess", true);
     	        	jsObject.addProperty("message","You are Logged Out");
-    	        	session.clear();
+    	        	//session.clear();
+    	        	session.remove("username");
+    	        	session.remove("userid");
     	        }
     	        else{
     	        	jsObject.addProperty("logoutSuccess", false);
