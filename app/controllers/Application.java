@@ -26,6 +26,25 @@ public class Application extends Controller {
     	setTopThreeGutsyGuys();
     	setTopThreeGutsyGirls();
     	setRecentSadPosts();
+    	setRecentYouthPosts();
+		
+	}
+
+
+
+	private static void setRecentYouthPosts() {
+List<YouthPost> recentPosts=YouthRevolution.getLatestPost();
+
+  YouthPost post1=recentPosts.get(0);
+		if(post1!=null){
+			session.put("youth1",post1.title);
+			session.put("youth1id",post1.id);
+		}
+		YouthPost post2=recentPosts.get(1);
+		if(post2!=null){
+		session.put("youth2",post2.title);
+		session.put("youth2id",post2.id);
+		}
 		
 	}
 

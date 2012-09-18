@@ -1,29 +1,29 @@
 <script>
 function openForm(){
-	 document.getElementById("outerdiv").style.visibility= "visible";
-	 document.getElementById("outerdiv").style.display= "block";
+	 document.getElementById("outerdivyr").style.visibility= "visible";
+	 document.getElementById("outerdivyr").style.display= "block";
 }
 function hideform(){
-	 document.getElementById("outerdiv").style.visibility= "hidden";
-	 document.getElementById("outerdiv").style.display= "none";
+	 document.getElementById("outerdivyr").style.visibility= "hidden";
+	 document.getElementById("outerdivyr").style.display= "none";
 }
 function validateNewForm()
 {
-var title=document.forms["newStoryForm"]["title"].value;
-var content=document.forms["newStoryForm"]["content"].value;
+var title=document.forms["newStoryFormyr"]["title"].value;
+var content=document.forms["newStoryFormyr"]["content"].value;
 
 
 if (title==null || title=="" ||!title.match (/\S/))
   {
   alert("Please Fill Title Field");
-  document.newStoryForm.title.focus() ;
+  document.newStoryFormyr.title.focus() ;
   return false;
   }
 
 if (content==null || content==""||!content.match (/\S/))
 {
 alert("Please Fill Content Field");
-document.newStoryForm.content.focus() ;
+document.newStoryFormyr.content.focus() ;
 return false;
 }
 
@@ -63,15 +63,15 @@ function checkUser(){
 </script>
 
 <div class="newpost">
-<a href="javaScript:checkUser()"><span>Write Sad Story</span></a>
+<a href="javaScript:checkUser()"><span>Write Youth Post</span></a>
 </div>
 
-<div id="outerdiv" class="formwrapper">
- <form name="newStoryForm" action="@{SadStory.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
+<div id="outerdivyr" class="formwrapper">
+ <form name="newStoryFormyr" action="@{YouthRevolution.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
         <div>Title <br/><input class="ntitle" type="text" name="title" /></div><br/> <br/>
         <div> Content <br/><textarea  name="content"> </textarea> </div><br/> 
         <div>Upload Image (Optional Field) <input class ="uploadbutton" type="file" name="imageforpost" ></div><br/> 
-        <div> <input class="nsubmit" type="submit" value="Post Sad Story" /></div>
+        <div> <input class="nsubmit" type="submit" value="Post Youth Story" /></div>
          <div><input class="nsubmit" type="button" value="Cancel" onclick="javaScript:hideform()"/></div>
          </form>
 </div>

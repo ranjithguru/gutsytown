@@ -10,8 +10,8 @@ text-decoration: underline;
              <div class="recentpost">Recent Posts</div> 
              <div class='headings'><span>Youth Revolution</span></div>
              <div class="recentpostholder">
-             <div><a href="@{SadStory.sadStory(session.sad1id)}"><marquee>${session.sad1}</marquee></a></div>
-              <div> <a href="@{SadStory.sadStory(session.sad2id)}"><marquee>${session.sad2}</marquee></a></div>
+             <div><a href="@{YouthRevolution.youthRevolution(session.youth1id)}"><marquee>${session.youth1}</marquee></a></div>
+              <div> <a href="@{YouthRevolution.youthRevolution(session.youth2id)}"><marquee>${session.youth2}</marquee></a></div>
                </div>
              <div class='headings'>Talk Fight</div>
               <div class="recentpostholder">
@@ -20,8 +20,8 @@ text-decoration: underline;
                </div>
               <div class='headings'>Your Sad Story</div>
                <div class="recentpostholder">
-             <div><a href='#'><marquee>first post</marquee></a></div>
-              <div> <a href='#'><marquee>second post</marquee></a></div>
+             <div><a href="@{SadStory.sadStory(session.sad1id)}"><marquee>${session.sad1}</marquee></a></div>
+              <div> <a href="@{SadStory.sadStory(session.sad2id)}"><marquee>${session.sad2}</marquee></a></div>
                </div>
              
                <div class='headings'>Your First Crush </div>

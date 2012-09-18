@@ -4,14 +4,28 @@
 
 # Home page
 GET     /                                       Application.index
+ GET     /gytsyWinner                               Application.gutsyGuyWinner
+
+GET     /youthRevolution                                  YouthRevolution.youthRevolution
+GET     /nextOldPostsYouth                              YouthRevolution.nextOldPosts
+POST     /writeNewYouth                              YouthRevolution.writeNew
+GET     /previousYouth                                    YouthRevolution.previousOldPosts
+
+GET     /talkFight                                 TalkFight.talkFight
+
 
 GET     /sadstory                                  SadStory.sadStory
-GET     /contact                                   Contact.contact
-GET     /nextOldPosts                              SadStory.nextOldPosts
+GET     /nextOldPostsSad                              SadStory.nextOldPosts
 POST     /writeNewSadStory                          SadStory.writeNew
- GET     /gytsyWinner                               Application.gutsyGuyWinner
- GET     /previous                                    SadStory.previousOldPosts
+GET     /previousSad                                    SadStory.previousOldPosts
  
+ GET     /gutsyPolls                                   GutsyPolls.gutsyPolls
+ 
+ GET     /contact                                   Contact.contact
+ 
+
+
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

@@ -1,16 +1,16 @@
 #{extends 'main.html' /}
-<div class="sectionheading">Sad Stories</div>
- #{writeNewSadStory /}
+<div class="sectionheading">Youth Revolution</div>
+ #{writeNewYouthRevolution /}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{frontPostUI post:frontPost /}
+    #{youthFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{commentsUI post:frontPost /}
+#{youthCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
-#{form @SadStory.postComment(frontPost.id)}
+#{form @YouthRevolution.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
             All fields are required!
@@ -37,7 +37,7 @@
             #{list items:olderPosts, as:'oldPost'}
                 <div class="post">
                     <h2 class="post-title">
-                        <a href="@{SadStory.sadStory(oldPost.id)}">${oldPost.title}</a>
+                        <a href="@{YouthRevolution.youthRevolution(oldPost.id)}">${oldPost.title}</a>
                         %{lastPost=oldPost}%
                     </h2>
                      #{oldPostUiWithoutTitle post:oldPost /}
@@ -52,7 +52,7 @@
      
           #{if lastPost.previous()}
          <div class="paginatebutton">
-         <a href="@{SadStory.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
+         <a href="@{YouthRevolution.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
          </div>
          #{/if}
          #{/if}
@@ -60,12 +60,12 @@
           #{if olderPosts}
      #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
       <div class="paginatebutton">
-         <a href="@{SadStory.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         <a href="@{YouthRevolution.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
          </div>
          #{/if}
           #{/if}
          
-       
+      
 
 </div>
 #{/if}
