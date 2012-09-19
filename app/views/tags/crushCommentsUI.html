@@ -1,0 +1,28 @@
+<div class="comments">
+        <h3 class="simpleheadings">
+            ${_post.comments.size() ?: 'no'} 
+            comment${_post.comments.size().pluralize()}
+        </h3>
+        
+        #{list items:_post.comments, as:'comment'}
+            <div class="comment">
+                <div class="comment-metadata">
+                    <span class="comment-author">By ${comment.author},</span>
+                    <span class="comment-date">
+                        ${comment.postedAt.format('dd MMM yy')}
+                    </span>
+                </div>
+                <div class="comment-content">
+                    <div class="about">Detail: </div>
+                    ${comment.content.escape().nl2br()}
+                </div>
+            </div>
+            #{if session.get("userid")}
+        #{if 1==session.get("userid").toLong() }
+            <div style="font-size: 10px;"><a href="@{FirstCrush.deleteComment(comment.id)}">Delete</a></div>
+            #{/if}
+        #{/if}
+        #{/list}
+        
+        
+    </div>

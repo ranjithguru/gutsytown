@@ -27,7 +27,26 @@ public class Application extends Controller {
     	setTopThreeGutsyGirls();
     	setRecentSadPosts();
     	setRecentYouthPosts();
+    	setRecentCrushPosts();
 		
+	}
+
+
+
+	private static void setRecentCrushPosts() {
+		List<CrushPost> recentPosts=FirstCrush.getLatestPost();
+
+		CrushPost post1=recentPosts.get(0);
+				if(post1!=null){
+					session.put("crush1",post1.title);
+					session.put("crush1id",post1.id);
+				}
+				CrushPost post2=recentPosts.get(1);
+				if(post2!=null){
+				session.put("crush2",post2.title);
+				session.put("crush2id",post2.id);
+				}
+				
 	}
 
 
@@ -77,8 +96,6 @@ List<YouthPost> recentPosts=YouthRevolution.getLatestPost();
 		session.put("girl1p", topThreeGirls.get(0).points);
 		session.put("girl2p", topThreeGirls.get(1).points);
 		session.put("girl3p", topThreeGirls.get(2).points);
-    	
-		
 	}
 
 

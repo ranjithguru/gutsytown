@@ -19,6 +19,11 @@ GET     /nextOldPostsSad                              SadStory.nextOldPosts
 POST     /writeNewSadStory                          SadStory.writeNew
 GET     /previousSad                                    SadStory.previousOldPosts
  
+ GET     /firstCrush                                  FirstCrush.firstCrush
+GET     /nextOldPostsCrush                              FirstCrush.nextOldPosts
+POST     /writeNewCrush                                   FirstCrush.writeNew
+GET     /previousCrush                                    FirstCrush.previousOldPosts
+ 
  GET     /gutsyPolls                                   GutsyPolls.gutsyPolls
  
  GET     /contact                                   Contact.contact
