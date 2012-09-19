@@ -23,7 +23,8 @@ GET     /previousSad                                    SadStory.previousOldPost
 GET     /nextOldPostsCrush                              FirstCrush.nextOldPosts
 POST     /writeNewCrush                                   FirstCrush.writeNew
 GET     /previousCrush                                    FirstCrush.previousOldPosts
- 
+
+
  GET     /gutsyPolls                                   GutsyPolls.gutsyPolls
  
  GET     /contact                                   Contact.contact
