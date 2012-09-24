@@ -156,19 +156,29 @@ To strive towards excellence in all spheres of individual and collective activit
                     ${comment.content.escape().nl2br()}
                 </div>
             </div>
+            #{if session.get("userid")}
+          #{if 1==session.get("userid").toLong() }
+            <div style="font-size: 10px;"><a href="@{Application.deleteComment(comment.id)}">Delete</a></div>
+            #{/if}
+        #{/if}
         #{/list}
         
     </div>
      <hr class="horizontalline"/>
  <h3 class="simpleheadings">Post a comment</h3>
  #{form @Application.postConstitutionComment()}
+ #{ifErrors}
+        <p class="error">
+            All fields are required!
+        </p>
+    #{/ifErrors}
     <p>
         <label for="author">Your name: </label>
-        <input type="text" name="author" id="author" />
+        <input type="text" name="author" id="author" value="${flash.author}"/>
     </p>
     <p>
         <label for="content">Your message: </label>
-        <textarea name="content" id="content"></textarea>
+        <textarea name="content" id="content">${flash.content}</textarea>
     </p>
     <p>
         <input class="submit" type="submit" value="Submit your comment" />

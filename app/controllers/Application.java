@@ -131,10 +131,17 @@ List<YouthPost> recentPosts=YouthRevolution.getLatestPost();
 
 
 
-	public static void postConstitutionComment(String author, String content) {
+	public static void postConstitutionComment(@Required String author, @Required String content) {
+		if (validation.hasErrors()) {
+        	params.flash();
+        	validation.keep();
+        	index();
+        	 
+        }
     	new IndianComment(author, content).save();
     	index();
     }
+	
     public static long getCount(){
     	return IndianComment.count();
     }
@@ -143,5 +150,10 @@ List<YouthPost> recentPosts=YouthRevolution.getLatestPost();
     return simpleCommentList;
     }
     
+    public static void deleteComment(long id){
+    	final IndianComment comment = IndianComment.findById(id);
+    	comment.delete();
+    	index();
+    }
    
 }
