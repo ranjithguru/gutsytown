@@ -24,6 +24,11 @@ GET     /nextOldPostsCrush                              FirstCrush.nextOldPosts
 POST     /writeNewCrush                                   FirstCrush.writeNew
 GET     /previousCrush                                    FirstCrush.previousOldPosts
 
+GET     /lovestory                                   LoveStory.loveStory
+GET     /nextOldPostsLove                             LoveStory.nextOldPosts
+POST     /writeNewLoveStory                           LoveStory.writeNew
+GET     /previousLove                                    LoveStory.previousOldPosts
+
 
  GET     /gutsyPolls                                   GutsyPolls.gutsyPolls
  

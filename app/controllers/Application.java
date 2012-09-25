@@ -28,6 +28,26 @@ public class Application extends Controller {
     	setRecentSadPosts();
     	setRecentYouthPosts();
     	setRecentCrushPosts();
+    	setRecentLovePosts();
+		
+	}
+
+
+
+	private static void setRecentLovePosts() {
+		List<LovePost> recentPosts=LoveStory.getLatestPost();
+
+		LovePost post1=recentPosts.get(0);
+				if(post1!=null){
+					session.put("love1",post1.title);
+					session.put("love1id",post1.id);
+				}
+				LovePost post2=recentPosts.get(1);
+				if(post2!=null){
+				session.put("love2",post2.title);
+				session.put("love2id",post2.id);
+				}
+				
 		
 	}
 

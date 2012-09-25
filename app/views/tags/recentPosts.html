@@ -31,8 +31,8 @@ text-decoration: underline;
                </div>
              <div class='headings'>Your Love Story</div>
               <div class="recentpostholder">
-             <div><a href='#'><marquee>first post</marquee></a></div>
-              <div> <a href='#'><marquee>second post</marquee></a></div>
+             <div><a href="@{LoveStory.loveStory(session.love1id)}"><marquee>${session.love1}</marquee></a></div>
+              <div> <a href="@{LoveStory.loveStory(session.love2id)}"><marquee>${session.love2}</marquee></a></div>
                </div>
              <div class='headings'>Review Movies</div>
               <div class="recentpostholder">

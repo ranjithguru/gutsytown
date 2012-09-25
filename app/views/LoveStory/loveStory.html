@@ -1,0 +1,79 @@
+#{extends 'main.html' /}
+<div class="sectionheading">Love Stories</div>
+ #{writeNewLoveStory /}
+ <hr class="horizontalline"/>
+ #{if frontPost}
+     #{loveFrontPost post:frontPost /}
+<!--comment section -->
+<hr class="horizontalline"/>
+#{loveCommentsUI post:frontPost /}
+ <hr class="horizontalline"/>
+<h3 class="simpleheadings">Post a comment</h3>
+
+#{form @LoveStory.postComment(frontPost.id)}
+#{ifErrors}
+        <p class="error">
+            All fields are required!
+        </p>
+    #{/ifErrors}
+    <p>
+        <label for="author">Your name: </label>
+        <input type="text" name="author" id="author" value="${flash.author}"/>
+    </p>
+    <p>
+        <label for="content">Your message: </label>
+        <textarea name="content" id="content">${flash.content}</textarea>
+    </p>
+    <p>
+        <input class="submit" type="submit" value="Submit your comment" />
+    </p>
+#{/form}
+<hr class="horizontalline"/>
+<!--old posts section  -->
+    #{if olderPosts}
+        <div class="older-posts">    
+            <h3>Recent Posts</h3>
+        
+            #{list items:olderPosts, as:'oldPost'}
+                <div class="post">
+                    <h2 class="post-title">
+                        <a href="@{LoveStory.loveStory(oldPost.id)}">${oldPost.title}</a>
+                        %{lastPost=oldPost}%
+                    </h2>
+                     #{oldPostUiWithoutTitle post:oldPost /}
+                </div>
+            #{/list}
+        </div>
+    #{/if}
+    
+    <div>
+    
+     #{if olderPosts}
+     
+          #{if lastPost.previous()}
+         <div class="paginatebutton">
+         <a href="@{loveStory.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
+         </div>
+         #{/if}
+         #{/if}
+         
+          #{if olderPosts}
+     #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
+      <div class="paginatebutton">
+         <a href="@{loveStory.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         </div>
+         #{/if}
+          #{/if}
+         
+       
+
+</div>
+#{/if}
+ 
+#{else}
+    <div class="empty">
+        There is currently nothing to read here.
+    </div>
+#{/else}
+
+
