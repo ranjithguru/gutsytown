@@ -30,6 +30,18 @@ POST     /writeNewLoveStory                           LoveStory.writeNew
 GET     /previousLove                                    LoveStory.previousOldPosts
 
 
+GET     /movieReview                                   MovieReview.movieReview
+GET     /nextOldPostsMovie                             MovieReview.nextOldPosts
+POST     /writeNewreview                               MovieReview.writeNew
+GET     /previousMovie                                  MovieReview.previousOldPosts
+
+
+GET     /myBlog                                   MyBlog.myBlog
+GET     /nextOldPostsMyBlog                             MyBlog.nextOldPosts
+POST     /writeNewMyBlog                               MyBlog.writeNew
+GET     /previousMyBlog                                  MyBlog.previousOldPosts
+
+
  GET     /gutsyPolls                                   GutsyPolls.gutsyPolls
  
  GET     /contact                                   Contact.contact

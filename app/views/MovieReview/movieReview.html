@@ -1,17 +1,17 @@
 #{extends 'main.html' /}
-#{set title:'Sad Story' /}
-<div class="sectionheading">Sad Stories</div>
- #{writeNewSadStory /}
+#{set title:'Movie Reviews' /}
+<div class="sectionheading">Movie Reviews</div>
+ #{writeNewReview /}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{frontPostUI post:frontPost /}
+    #{movieFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{commentsUI post:frontPost /}
+#{movieCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
-#{form @SadStory.postComment(frontPost.id)}
+#{form @MovieReview.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
             All fields are required!
@@ -38,7 +38,7 @@
             #{list items:olderPosts, as:'oldPost'}
                 <div class="post">
                     <h2 class="post-title">
-                        <a href="@{SadStory.sadStory(oldPost.id)}">${oldPost.title}</a>
+                        <a href="@{MovieReview.movieReview(oldPost.id)}">${oldPost.title}</a>
                         %{lastPost=oldPost}%
                     </h2>
                      #{oldPostUiWithoutTitle post:oldPost /}
@@ -53,7 +53,7 @@
      
           #{if lastPost.previous()}
          <div class="paginatebutton">
-         <a href="@{SadStory.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
+         <a href="@{MovieReview.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
          </div>
          #{/if}
          #{/if}
@@ -61,12 +61,12 @@
           #{if olderPosts}
      #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
       <div class="paginatebutton">
-         <a href="@{SadStory.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         <a href="@{MovieReview.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
          </div>
          #{/if}
           #{/if}
          
-       
+      
 
 </div>
 #{/if}

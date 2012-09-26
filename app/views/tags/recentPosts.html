@@ -36,18 +36,18 @@ text-decoration: underline;
                </div>
              <div class='headings'>Review Movies</div>
               <div class="recentpostholder">
-             <div><a href='#'><marquee>first post</marquee></a></div>
-              <div> <a href='#'><marquee>second post</marquee></a></div>
+             <div><a href="@{MovieReview.movieReview(session.mov1id)}"><marquee>${session.mov1}</marquee></a></div>
+              <div> <a href="@{MovieReview.movieReview(session.mov2id)}"><marquee>${session.mov2}</marquee></a></div>
                </div>
              <div class='headings'>My Blog</div>
               <div class="recentpostholder">
-             <div><a href='#'><marquee>first post</marquee></a></div>
-              <div> <a href='#'><marquee>second post</marquee></a></div>
+             <div><a href="@{MyBlog.myBlog(session.my1id)}"><marquee>${session.my1}</marquee></a></div>
+              <div> <a href="@{MyBlog.myBlog(session.my2id)}"><marquee>${session.my2}</marquee></a></div>
                </div>
        <div class='headings'>Gutsy Polls</div>
               <div class="recentpostholder">
-             <div><a href='#'><marquee>first post</marquee></a></div>
-              <div> <a href='#'><marquee>second post</marquee></a></div>
+             <div><a href='#'><marquee>test first post</marquee></a></div>
+              <div> <a href='#'><marquee>test second post</marquee></a></div>
                </div>
 
        </div>

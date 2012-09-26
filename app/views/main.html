@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Indian Constitution / Youth Revolution / Your First Crush / Your Love Story / Your Sad Story / Review Movies By Yourselves / TalkFight / Gutsy Polls</title>
+        <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
@@ -26,8 +26,8 @@
     <li><a href="@{SadStory.sadStory()}"><span>Your Sad Story</span></a></li>
    <li><a href="@{FirstCrush.firstCrush()}"><span>Your First Crush</span></a></li>
    <li><a href="@{LoveStory.loveStory()}"><span>Your Love Story</span></a></li>
-   <li><a href='#'><span>Review Movies</span></a></li>
-   <li><a href='#'><span>My Blog</span></a></li>
+   <li><a href="@{MovieReview.movieReview()}"><span>Review Movies</span></a></li>
+   <li><a href="@{MyBlog.myBlog()}"><span>My Blog</span></a></li>
    <li><a href="@{GutsyPolls.gutsyPolls()}"><span>Gutsy Polls</span></a></li>
    <li><a href="@{Contact.contact()}"><span>Contact Me</span></a></li>
 </ul>
