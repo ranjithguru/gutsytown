@@ -15,6 +15,7 @@ import play.mvc.Controller;
 public class SadStory extends Controller {
 	
 	public static void sadStory(Long id) {
+		Application.doInitialSetup();
     	Post frontPost;
     	if(id!=null){
     		frontPost =Post.findById(id);

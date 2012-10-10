@@ -11,6 +11,7 @@ import play.mvc.Controller;
 public class Contact extends Controller  {
 
 	public static void contact(){
+		Application.doInitialSetup();
 		 List<ContactComment> contactCommentList = ContactComment.find("order by postedAt desc").fetch();
     	render(contactCommentList);
     }

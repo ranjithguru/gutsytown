@@ -17,6 +17,7 @@ import play.mvc.Controller;
 public class YouthRevolution extends Controller{
 
 	public static void youthRevolution(Long id) {
+		Application.doInitialSetup();
     	YouthPost frontPost;
     	if(id!=null){
     		frontPost =YouthPost.findById(id);

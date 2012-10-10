@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 public class LoveStory extends Controller {
 	
 	public static void loveStory(Long id) {
+		Application.doInitialSetup();
     	LovePost frontPost;
     	if(id!=null){
     		frontPost =LovePost.findById(id);

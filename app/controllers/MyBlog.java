@@ -15,6 +15,7 @@ import com.google.gson.JsonObject;
 public class MyBlog extends Controller {
 	
 	public static void myBlog(Long id) {
+		Application.doInitialSetup();
     	BlogPost frontPost;
     	if(id!=null){
     		frontPost =BlogPost.findById(id);

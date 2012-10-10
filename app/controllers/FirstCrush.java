@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 public class FirstCrush extends Controller {
 	
 	public static void firstCrush(Long id) {
+		Application.doInitialSetup();
     	CrushPost frontPost;
     	if(id!=null){
     		frontPost =CrushPost.findById(id);

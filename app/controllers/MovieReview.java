@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 public class  MovieReview extends Controller {
 	
 	public static void movieReview(Long id) {
+		Application.doInitialSetup();
     	MoviePost frontPost;
     	if(id!=null){
     		frontPost =MoviePost.findById(id);

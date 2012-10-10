@@ -20,7 +20,7 @@ public class Application extends Controller {
     
   
     
-    private static void doInitialSetup() {
+    public static void doInitialSetup() {
     	setGutsyWinnerGuy();
     	setGutsyWinnerGirl();
     	setTopThreeGutsyGuys();
