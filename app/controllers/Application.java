@@ -19,8 +19,10 @@ public class Application extends Controller {
     }
     
   
-    
-    public static void doInitialSetup() {
+    /**
+     * this should not be public or else it will be a action
+     */
+    static void doInitialSetup() {
     	setGutsyWinnerGuy();
     	setGutsyWinnerGirl();
     	setTopThreeGutsyGuys();
