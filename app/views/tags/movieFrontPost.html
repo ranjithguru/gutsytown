@@ -19,7 +19,7 @@ if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	  
 	   var likeResponse =JSON.parse(xmlhttp.responseText);
 	   document.getElementById("nooflikesmr").innerHTML="Total Likes : "+ likeResponse.postLikes;
-	   document.getElementById("likememr").href=null;
+	   document.getElementById("likememr").style.display="none";
   }
 }
   var testObj = {id:postId};

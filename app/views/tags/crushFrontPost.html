@@ -19,7 +19,7 @@ if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	  
 	   var likeResponse =JSON.parse(xmlhttp.responseText);
 	   document.getElementById("nooflikesfc").innerHTML="Total Likes : "+ likeResponse.postLikes;
-	   document.getElementById("likemefc").href=null;
+	   document.getElementById("likemefc").style.display="none";
   }
 }
   var testObj = {id:postId};
@@ -53,7 +53,7 @@ xmlhttp.send();
         <div class="post-content">
             ${_post.content.nl2br()}
         </div>
-         <div><a class="like" id="likemefc" href="javaScript:likefc(${_post.id})">Like</a>
+         <div><a class="like" id="likemefc" href="javaScript:likefc(${_post.id})"; return false; >Like</a>
             <span class="nooflikes" id="nooflikesfc">Total Likes : ${_post.likes}</span>
         
          </div>
