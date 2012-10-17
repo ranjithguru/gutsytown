@@ -670,11 +670,9 @@ color:#00A2E8 ;
 	width: 100%; 
 	height: 40px;
 	font: bolder 30px "Century Schoolbook", Georgia, Times, serif;
-	background:transparent url(images/titleback.jpg);
 	color:#FF4500;
 	text-align: center;
 	padding-top:4px;
-    border:2px solid green;
 	}
 	
 }
