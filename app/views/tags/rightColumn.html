@@ -13,20 +13,22 @@
 .subheadings{
 	font-family:cursive;
 	background:transparent url(public/stylesheets/images/menu.png) repeat-x top left;
-	width:100%;
+	border:2px solid #00A2E8;
+	width:151px;
 	display:block;
-	float:left;
+	float:right;
 	color:#00A2E8;
 	font-size: 12px;
-	padding: 1px;
+	text-align: center;
 	}
 	
 	
 .topRanks{
 width: 150px;
 height: 40px;
-border: 4px solid #00A2E8;
 background-color: white;
+border:1px solid #00A2E8;
+float:right;
 }
 .image{
 width:20px;
@@ -71,7 +73,7 @@ font-size: 11px;
 <!--                    <div class='headings' style="font-size: 12px;padding: 1px;"><span>Gutsy Indian Girl</span></div><br/> -->
 <!--                 <img src="public/images/female.jpg" alt="gutsygirl" class="image"><br/> -->
 <!--                 <div class="recentpost" style="font-size: 12px;padding: 0px;">${session.gutsygirl} ${session.gutsygirlp} points</div><br/> -->
-               
+      
     <div><span class="subheadings">Top 3 Gutsy Guys</span><br/>
      <div class="topRanks">
                       <img class="image" src="/public/images/number1.jpg">
@@ -106,4 +108,5 @@ font-size: 11px;
                 <label class="points">Points:${session.girl3p}</label>
          </div>
                 </div>
+                <div class="fb-like-box" data-href="http://www.facebook.com/gutsytown" data-width="292" data-height="556" data-show-faces="true" data-stream="true" data-header="true"></div> 
     </div>

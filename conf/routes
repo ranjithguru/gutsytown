@@ -6,7 +6,7 @@
 GET     /                                       Application.index
  GET     /gytsyWinner                               Application.gutsyGuyWinner
 
-GET     /youthRevolution                                  YouthRevolution.youthRevolution
+GET     /youthRevolution                                 YouthRevolution.youthRevolution
 GET     /nextOldPostsYouth                              YouthRevolution.nextOldPosts
 POST     /writeNewYouth                              YouthRevolution.writeNew
 GET     /previousYouth                                    YouthRevolution.previousOldPosts

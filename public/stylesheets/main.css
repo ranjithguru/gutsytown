@@ -90,7 +90,7 @@ width: 100%;
 
 #contentcolumn{
 margin-left:16%; /*Margins for content column. Should be "0 right-column-width 0 left-column-width*/
-width:70%;
+width:60%;
 float:left;
 }
 
@@ -103,11 +103,10 @@ border:5px solid #00A2E8;
 
 #rightcolumn{
 float: right;
-width: 130px; /*Width of right column in pixels*/
+width: 292px; /*Width of right column in pixels*/
 height:100%;
-margin-left: -200px; /*Set margin to -(RightColumnWidth)*/
+margin-left: -292px; /*Set margin to -(RightColumnWidth)*/
 background:white;
-border:2px solid #00A2E8;;
 border-width:2px;
 overflow: hidden;
 }
@@ -187,7 +186,7 @@ padding: 4px 0px;
 .horizontalline{
 	border-color:#00A2E8;
 	border-style:dashed;
-	width: 98%;
+	width: 95%;
 	height:1px;
     background-color:black;
     clear: both;
@@ -200,7 +199,7 @@ padding: 4px 0px;
 }
 /* ********************Indian constitution*********************/
 .indianconstitution{
-	width:75%;
+	width:85%;
 	padding: 25px;
 	background:url(images/indianflag.jpg);	
 }
@@ -336,7 +335,7 @@ padding: 4px 0px;
 .post .post-content {
     position: relative;
     font-family:Verdana, Arial, Helvetica,Futura, sans-serif;
-    width:70%;
+    width:80%;
     background-color:#FFDDDD;
     padding: 5px;
     margin: 10px 0 50px 0;
@@ -428,8 +427,8 @@ h3 span {
     color: black;
     font-size: 13px;
     margin-top: 10px;
-  font-style:italic;
-  font-weight:900;
+   font-style:italic;
+   font-weight:900;
      margin-bottom: 10px;
     margin-left: 100px;
     padding: 5px;
