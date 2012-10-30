@@ -2,9 +2,9 @@ package controllers;
 
 import play.mvc.Controller;
 
-public class TalkFight  extends Controller{
+public class Decision  extends Controller{
 	
-	public static void talkFight() {
+	public static void decision() {
 		Application.doInitialSetup();
 		render();
 	}

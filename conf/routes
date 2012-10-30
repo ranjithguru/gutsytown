@@ -11,7 +11,7 @@ GET     /nextOldPostsYouth                              YouthRevolution.nextOldP
 POST     /writeNewYouth                              YouthRevolution.writeNew
 GET     /previousYouth                                    YouthRevolution.previousOldPosts
 
-GET     /talkFight                                 TalkFight.talkFight
+GET     /decision                                   Decision.decision
 
 
 GET     /sadstory                                  SadStory.sadStory
