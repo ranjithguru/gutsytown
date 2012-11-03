@@ -3,8 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET     /                                            Application.index
  GET     /gytsyWinner                               Application.gutsyGuyWinner
+
+GET     /indianConstitution                            IndianConstitution.indianConstitution
+
 
 GET     /youthRevolution                                 YouthRevolution.youthRevolution
 GET     /nextOldPostsYouth                              YouthRevolution.nextOldPosts

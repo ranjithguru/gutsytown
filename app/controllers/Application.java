@@ -14,8 +14,7 @@ public class Application extends Controller {
 	
     public static void index() {
     	doInitialSetup();
-    	 List<IndianComment> simpleCommentList = IndianComment.find("order by postedAt desc").fetch();
-        render(simpleCommentList);
+        render();
     }
     
   
@@ -207,32 +206,5 @@ List<YouthPost> recentPosts=YouthRevolution.getLatestPost();
     	session.put("gutsyguy", gutsyGuy.fullname);
     	session.put("gutsyguyp", gutsyGuy.points);
 	}
-
-
-
-	public static void postConstitutionComment(@Required String author, @Required String content) {
-		if (validation.hasErrors()) {
-        	params.flash();
-        	validation.keep();
-        	index();
-        	 
-        }
-    	new IndianComment(author, content).save();
-    	index();
-    }
-	
-    public static long getCount(){
-    	return IndianComment.count();
-    }
-    public static List<IndianComment> getSimpleCommentList(){ 
-    List<IndianComment> simpleCommentList = IndianComment.find("order by postedAt desc").fetch();
-    return simpleCommentList;
-    }
-    
-    public static void deleteComment(long id){
-    	final IndianComment comment = IndianComment.findById(id);
-    	comment.delete();
-    	index();
-    }
    
 }

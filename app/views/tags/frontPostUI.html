@@ -48,7 +48,7 @@ xmlhttp.send();
             </span>
         </div>
          #{if _post.postImage.get()}
-         <div><img src="@{SadStory.getPostImage(_post.id)}"/></div>
+         <div><img alt="sad story" src="@{SadStory.getPostImage(_post.id)}"/></div>
           #{/if}
         <div class="post-content">
             ${_post.content.nl2br()}
