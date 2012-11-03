@@ -1,6 +1,6 @@
 <script  type="text/javascript">
 
- function likemr(postId){
+ function likegd(postId){
 	
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -18,12 +18,12 @@ if (xmlhttp.readyState==4 && xmlhttp.status==200)
   { 
 	  
 	   var likeResponse =JSON.parse(xmlhttp.responseText);
-	   document.getElementById("nooflikesmr").innerHTML="Total Likes : "+ likeResponse.postLikes;
-	   document.getElementById("likememr").style.display="none";
+	   document.getElementById("nooflikesgd").innerHTML="Total Likes : "+ likeResponse.postLikes;
+	   document.getElementById("likemegd").style.display="none";
   }
 }
   var testObj = {id:postId};
-  var listAction = #{jsAction @MovieReview.likeThePost(':id') /}
+  var listAction = #{jsAction @Decision.likeThePost(':id') /}
 xmlhttp.open("GET",listAction(testObj),true);
 xmlhttp.send();
 }
@@ -48,18 +48,18 @@ xmlhttp.send();
             </span>
         </div>
          #{if _post.postImage.get()}
-         <div><img src="@{MovieReview.getPostImage(_post.id)}"/></div>
+         <div><img src="@{Decision.getPostImage(_post.id)}"/></div>
           #{/if}
         <div class="post-content">
             ${_post.content.nl2br()}
         </div>
-         <div><a class="like" id="likememr" href="javaScript:likemr(${_post.id})">Like</a>
-            <span class="nooflikes" id="nooflikesmr">Total Likes : ${_post.likes}</span>
+         <div><a class="like" id="likemegd" href="javaScript:likegd(${_post.id})">Like</a>
+            <span class="nooflikes" id="nooflikesgd">Total Likes : ${_post.likes}</span>
         
          </div>
           #{if session.get("userid")}
         #{if _post.author.id==session.get("userid").toLong() ||1==session.get("userid").toLong() }
-        <div class="deletepost"><a href="@{MovieReview.deletePost(_post.id)}"><span>Delete Post</span></a></div>
+        <div class="deletepost"><a href="@{decision.deletePost(_post.id)}"><span>Delete Post</span></a></div>
          #{/if}
         #{/if}
 

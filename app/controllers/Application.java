@@ -33,10 +33,26 @@ public class Application extends Controller {
     	setRecentLovePosts();
     	setRecentMovieReviews();
     	setRecentMyBlogPosts();
+    	setRecentDecisionPosts();
 		
 	}
 
+    private static void setRecentDecisionPosts() {
+		List<DecisionPost> recentPosts=Decision.getLatestPost();
 
+		DecisionPost post1=recentPosts.get(0);
+				if(post1!=null){
+					session.put("gd1",post1.title);
+					session.put("gd1id",post1.id);
+				}
+				DecisionPost post2=recentPosts.get(1);
+				if(post2!=null){
+				session.put("gd2",post2.title);
+				session.put("gd2id",post2.id);
+				}
+				
+		
+	}
 
 	private static void setRecentMyBlogPosts() {
 		List<BlogPost> recentPosts=MyBlog.getLatestPost();

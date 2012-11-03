@@ -66,7 +66,7 @@ public class User extends Model {
 	}
 	
 	public static List<User> getTopThreeGutsyGuys(){
-		 Query query = JPA.em().createQuery("select u from User u where u.gender=1 order by u.points desc ");
+		 Query query = JPA.em().createQuery("select u from User u where u.gender=1 and u.id!=1 order by u.points desc ");
 		 List<User> topThreeGuys = query.getResultList().subList(0, 3);
 		 return topThreeGuys;
     }

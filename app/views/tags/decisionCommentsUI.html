@@ -1,0 +1,63 @@
+<script  type="text/javascript">
+
+ function likeDecision(commentId){
+	
+var xmlhttp;
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+ xmlhttp.onreadystatechange=function()
+{
+if (xmlhttp.readyState==4 && xmlhttp.status==200)
+  { 
+	  
+	   var likeResponse =JSON.parse(xmlhttp.responseText);
+	   document.getElementById("nooflikesfordecision"+commentId).innerHTML="Total Likes : "+ likeResponse.postLikes;
+	   document.getElementById("likemydecision"+commentId).style.display="none";
+  }
+}
+  var testObj = {id:commentId};
+  var listAction = #{jsAction @Decision.likeTheComment(':id') /}
+xmlhttp.open("GET",listAction(testObj),true);
+xmlhttp.send();
+}
+</script>
+
+<div class="comments">
+        <h3 class="simpleheadings">
+            ${_post.comments.size() ?: 'no'} 
+            decision${_post.comments.size().pluralize()}
+        </h3>
+        
+        #{list items:_post.comments, as:'comment'}
+            <div class="comment">
+                <div class="comment-metadata">
+                    <span class="comment-author">By ${comment.author},</span>
+                    <span class="comment-date">
+                        ${comment.postedAt.format('dd MMM yy')}
+                    </span>
+                </div>
+                <div class="comment-content">
+                    <div class="about">Detail: </div>
+                    ${comment.content.escape().nl2br()}
+                </div>
+            </div>
+            <div><a class="like" id=likemydecision${comment.id} href="javaScript:likeDecision(${comment.id})">Like</a>
+            <span class="nooflikes" id=nooflikesfordecision${comment.id}>Total Likes : ${comment.likes}</span>
+        
+         </div>
+            #{if session.get("userid")}
+        #{if 1==session.get("userid").toLong() }
+            <div style="font-size: 10px;"><a href="@{Decision.deleteComment(comment.id)}">Delete</a></div>
+            #{/if}
+        #{/if}
+        #{/list}
+        
+        
+    </div>
