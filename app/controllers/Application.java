@@ -14,7 +14,14 @@ public class Application extends Controller {
 	
     public static void index() {
     	doInitialSetup();
-        render();
+    	List<YouthPost> politics=YouthRevolution.getRecentFivePost();
+    	List<DecisionPost> decision=Decision.getRecentFivePost();
+    	List<LovePost> love=LoveStory.getRecentFivePost();
+    	List<CrushPost> crush=FirstCrush.getRecentFivePost();
+    	List<Post> sad=SadStory.getRecentFivePost();
+    	List<MoviePost> movie=MovieReview.getRecentFivePost();
+    	List<BlogPost> blog=MyBlog.getRecentFivePost();
+        render(politics,decision,love,crush,sad,movie,blog);
     }
     
   

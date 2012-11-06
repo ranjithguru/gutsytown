@@ -100,4 +100,8 @@ public class FirstCrush extends Controller {
 	 List<CrushPost> recentPosts =CrushPost.find("order by postedAt desc").from(0).fetch(2);
 	 return recentPosts;
  }
+ public static List<CrushPost> getRecentFivePost(){
+	 List<CrushPost> recentPosts =CrushPost.find("order by postedAt desc").from(0).fetch(5);
+	 return recentPosts;
+ }
 }

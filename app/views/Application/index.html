@@ -17,15 +17,163 @@
 </script>
 #{/set}
 
-<ul>
-    <li><a href="@{IndianConstitution.indianConstitution()}"><span>Indian Constitution</span></a></li>
-    <li><a href="@{YouthRevolution.youthRevolution()}"><span>Criticize Politics</span></a></li>
-   <li><a href="@{Decision.decision()}"><span>Gutsy Decision</span></a></li>
-    <li><a href="@{SadStory.sadStory()}"><span>Your Sad Story</span></a></li>
-   <li><a href="@{FirstCrush.firstCrush()}"><span>Your First Crush</span></a></li>
-   <li><a href="@{LoveStory.loveStory()}"><span>Your Love Story</span></a></li>
-   <li><a href="@{MovieReview.movieReview()}"><span>Review Movies</span></a></li>
-   <li><a href="@{MyBlog.myBlog()}"><span>My Blog</span></a></li>
-   <li><a href="@{GutsyPolls.gutsyPolls()}"><span>Gutsy Polls</span></a></li>
-   <li><a href="@{Contact.contact()}"><span>Contact Me</span></a></li>
-</ul>
+<style>
+.handPunch{
+    height: 300px;
+	width:700px;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.headingbutton{
+ width:100%;
+color:black;
+font-family:cursive;
+font-weight:bold;
+font-size:14px;
+text-align:center;
+background:repeat-x center #ffcc00;
+background-color:rgba(255,204,0,1);
+border:1px solid #ffcc00;
+border-bottom:1px solid #9f9f9f;
+cursor:pointer;
+}
+.box{
+width:150px;
+height: 200px;
+border:5px solid #ffcc00;
+display: block;
+overflow: hidden;
+float: left;
+margin: 10px;
+}
+.recent{
+font-size: 12px;
+font-family:cursive;
+font-weight:bolder;
+color: black;
+padding-left: 20px;
+
+}
+.posttitle{
+font-size: 12px;
+font-weight: normal;
+font-family:monospace;
+float: left;
+padding-left:5px;
+color:black;
+}
+.indexcontainer{
+padding: 20px;
+float: left;
+width: 800px;
+
+}
+.indiancontainer{
+padding-left:280px;
+float: left;
+width: 800px;
+
+}
+.constitutionbox{
+width:150px;
+height: 50px;
+border:5px solid #ffcc00;
+display: block;
+overflow: hidden;
+float: left;
+margin: 10px;
+clear: both;
+padding: 5px;
+background:repeat-x center black;
+}
+</style>
+
+<div><img alt="gutsytown" src="public/images/indexdisplay.jpg" class="handPunch"> </div>
+<div class="indiancontainer">
+<div class="constitutionbox">
+    <a href="@{IndianConstitution.indianConstitution()}"><h1 class="headingbutton">Indian Constitution</h1></a>
+    </div>
+    </div>
+<div class="indexcontainer">
+    <div class="box">
+    <a href="@{YouthRevolution.youthRevolution()}"><h1 class="headingbutton">Criticize Politics</h1></a>
+     <span class="recent">Recent 5 Posts</span>
+     #{if politics}
+            #{list items:politics, as:'post'}
+                   <br /><a href="@{YouthRevolution.youthRevolution(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    
+     <div class="box">
+   <a href="@{Decision.decision()}"><h1 class="headingbutton">Gutsy Decision</h1></a>
+   <span class="recent">Recent 5 Posts</span>
+    #{if decision}
+            #{list items:decision, as:'post'}
+                       <br /> <a href="@{Decision.decision(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    
+     <div class="box">
+    <a href="@{SadStory.sadStory()}"><h1 class="headingbutton">Your Sad Story</h1></a>
+   <span class="recent">Recent 5 Posts</span>
+     #{if sad}
+            #{list items:sad, as:'post'}
+                    
+                      <br /> <a href="@{SadStory.sadStory(post.id)}" class="posttitle">${post.title}</a>
+                    
+            #{/list}
+    #{/if}
+    </div>
+   
+     <div class="box">
+   <a href="@{FirstCrush.firstCrush()}"><h1 class="headingbutton">Your First Crush</h1></a>
+   <span class="recent">Recent 5 Posts</span>
+    #{if crush}
+            #{list items:crush, as:'post'}  
+                     <br /> <a href="@{FirstCrush.firstCrush(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    
+     <div class="box">
+   <a href="@{LoveStory.loveStory()}"><h1 class="headingbutton">Your Love Story</h1></a>
+   <span class="recent">Recent 5 Posts</span>
+    #{if love}
+            #{list items:love, as:'post'}
+                    
+                       <br /> <a href="@{LoveStory.loveStory(post.id)}" class="posttitle">${post.title}</a>
+                    
+            #{/list}
+    #{/if}
+    </div>
+   
+     <div class="box">
+   <a href="@{MovieReview.movieReview()}"><h1 class="headingbutton">Review Movies</h1></a>
+   <span class="recent">Recent 5 Posts</span>
+    #{if movie}
+            #{list items:movie, as:'post'}
+                      <br />  <a href="@{MovieReview.movieReview(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+   
+     <div class="box">
+   <a href="@{MyBlog.myBlog()}"><h1 class="headingbutton">My Blog</h1></a>
+   <span class="recent">Recent 5 Posts</span>
+    #{if blog}
+            #{list items:blog, as:'post'}
+                      <br /> <a href="@{MyBlog.myBlog(post.id)}" class="posttitle">${post.title}</a>
+                    
+            #{/list}
+    #{/if}
+    </div>
+    
+     <div class="box">
+   <a href="@{GutsyPolls.gutsyPolls()}"><h1 class="headingbutton">Gutsy Polls</h1></a>  
+   <span class="recent">This Feature Will Be Available Soon</span> 
+   </div>
+   </div>

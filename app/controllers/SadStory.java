@@ -98,4 +98,8 @@ public class SadStory extends Controller {
 	 List<Post> recentPosts =Post.find("order by postedAt desc").from(0).fetch(2);
 	 return recentPosts;
  }
+ public static List<Post> getRecentFivePost(){
+	 List<Post> recentPosts =Post.find("order by postedAt desc").from(0).fetch(5);
+	 return recentPosts;
+ }
 }

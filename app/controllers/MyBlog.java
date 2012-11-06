@@ -98,4 +98,8 @@ public class MyBlog extends Controller {
 	 List<BlogPost> recentPosts =BlogPost.find("order by postedAt desc").from(0).fetch(2);
 	 return recentPosts;
  }
+ public static List<BlogPost> getRecentFivePost(){
+	 List<BlogPost> recentPosts =BlogPost.find("order by postedAt desc").from(0).fetch(5);
+	 return recentPosts;
+ }
 }

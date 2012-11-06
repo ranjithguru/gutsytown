@@ -110,6 +110,10 @@ public class Decision extends Controller {
 	 List<DecisionPost> recentPosts =DecisionPost.find("order by postedAt desc").from(0).fetch(2);
 	 return recentPosts;
  }
+ public static List<DecisionPost> getRecentFivePost(){
+	 List<DecisionPost> recentPosts =DecisionPost.find("order by postedAt desc").from(0).fetch(5);
+	 return recentPosts;
+ }
 }
 
 

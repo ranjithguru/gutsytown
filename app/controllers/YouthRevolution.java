@@ -100,4 +100,9 @@ public class YouthRevolution extends Controller{
 	 List<YouthPost> recentPosts =YouthPost.find("order by postedAt desc").from(0).fetch(2);
 	 return recentPosts;
  }
+ 
+ public static List<YouthPost> getRecentFivePost(){
+	 List<YouthPost> recentPosts =YouthPost.find("order by postedAt desc").from(0).fetch(5);
+	 return recentPosts;
+ }
 }

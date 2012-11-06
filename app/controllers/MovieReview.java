@@ -99,5 +99,9 @@ public class  MovieReview extends Controller {
 	 List<MoviePost> recentPosts =MoviePost.find("order by postedAt desc").from(0).fetch(2);
 	 return recentPosts;
  }
+ public static List<MoviePost> getRecentFivePost(){
+	 List<MoviePost> recentPosts =MoviePost.find("order by postedAt desc").from(0).fetch(5);
+	 return recentPosts;
+ }
 }
 
