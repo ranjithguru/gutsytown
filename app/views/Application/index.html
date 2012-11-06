@@ -102,7 +102,7 @@ background:repeat-x center black;
      <span class="recent">Recent 5 Posts</span>
      #{if politics}
             #{list items:politics, as:'post'}
-                   <br /><a href="@{YouthRevolution.youthRevolution(post.id)}" class="posttitle">${post.title}</a>
+                   <br /><marquee scrollamount="2"><a href="@{YouthRevolution.youthRevolution(post.id)}" class="posttitle">${post.title}</a></marquee>
             #{/list}
     #{/if}
     </div>
@@ -112,7 +112,7 @@ background:repeat-x center black;
    <span class="recent">Recent 5 Posts</span>
     #{if decision}
             #{list items:decision, as:'post'}
-                       <br /> <a href="@{Decision.decision(post.id)}" class="posttitle">${post.title}</a>
+                       <br /> <marquee scrollamount="2"><a href="@{Decision.decision(post.id)}" class="posttitle">${post.title}</a></marquee>
             #{/list}
     #{/if}
     </div>
@@ -123,7 +123,7 @@ background:repeat-x center black;
      #{if sad}
             #{list items:sad, as:'post'}
                     
-                      <br /> <a href="@{SadStory.sadStory(post.id)}" class="posttitle">${post.title}</a>
+                      <br /><marquee scrollamount="2"> <a href="@{SadStory.sadStory(post.id)}" class="posttitle">${post.title}</a></marquee>
                     
             #{/list}
     #{/if}
@@ -134,7 +134,7 @@ background:repeat-x center black;
    <span class="recent">Recent 5 Posts</span>
     #{if crush}
             #{list items:crush, as:'post'}  
-                     <br /> <a href="@{FirstCrush.firstCrush(post.id)}" class="posttitle">${post.title}</a>
+                     <br /><marquee scrollamount="2"> <a href="@{FirstCrush.firstCrush(post.id)}" class="posttitle">${post.title}</a></marquee>
             #{/list}
     #{/if}
     </div>
@@ -145,7 +145,7 @@ background:repeat-x center black;
     #{if love}
             #{list items:love, as:'post'}
                     
-                       <br /> <a href="@{LoveStory.loveStory(post.id)}" class="posttitle">${post.title}</a>
+                       <br /><marquee scrollamount="2"><a href="@{LoveStory.loveStory(post.id)}" class="posttitle">${post.title}</a></marquee>
                     
             #{/list}
     #{/if}
@@ -156,7 +156,7 @@ background:repeat-x center black;
    <span class="recent">Recent 5 Posts</span>
     #{if movie}
             #{list items:movie, as:'post'}
-                      <br />  <a href="@{MovieReview.movieReview(post.id)}" class="posttitle">${post.title}</a>
+                      <br /><marquee scrollamount="2">  <a href="@{MovieReview.movieReview(post.id)}" class="posttitle">${post.title}</a></marquee>
             #{/list}
     #{/if}
     </div>
@@ -166,7 +166,7 @@ background:repeat-x center black;
    <span class="recent">Recent 5 Posts</span>
     #{if blog}
             #{list items:blog, as:'post'}
-                      <br /> <a href="@{MyBlog.myBlog(post.id)}" class="posttitle">${post.title}</a>
+                      <br /> <marquee scrollamount="2"><a href="@{MyBlog.myBlog(post.id)}" class="posttitle">${post.title}</a></marquee>
                     
             #{/list}
     #{/if}
