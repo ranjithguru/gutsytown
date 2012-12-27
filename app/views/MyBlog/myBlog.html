@@ -1,28 +1,28 @@
 #{extends 'main.html' /}
 #{set title:'My Blog' /}
-#{set description: 'If I feel like writing anything I will write in this section ,sorry guys I am bit greedy on this section.' /}
+#{set description: 'Blog posts written by admin' /}
 #{set 'moreScripts'}
  #{googleAnalytics /}
 #{/set}
 <div class="sectionheading">My Blog</div>
  #{if session.get("userid")}
         #{if 1==session.get("userid").toLong() }
- #{writeNewMyBlog /}
+ #{MyBlog/writeNewMyBlog /}
   #{/if}
         #{/if}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{myBlogFrontPost post:frontPost /}
+    #{MyBlog/myBlogFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{myBlogCommentsUI post:frontPost /}
+#{MyBlog/myBlogCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
 #{form @MyBlog.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
-            All fields are required!
+            All fields are required! and the code you entered should also match!!
         </p>
     #{/ifErrors}
     <p>
@@ -33,6 +33,7 @@
         <label for="content">Your message: </label>
         <textarea name="content" id="content">${flash.content}</textarea>
     </p>
+     #{captcha rID:randomID /}
     <p>
         <input class="submit" type="submit" value="Submit your comment" />
     </p>

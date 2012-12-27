@@ -6,8 +6,10 @@ import java.util.List;
 import models.BlogComment;
 import models.BlogPost;
 import models.User;
+import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.libs.Codec;
 import play.mvc.Controller;
 
 import com.google.gson.JsonObject;
@@ -26,11 +28,15 @@ public class MyBlog extends Controller {
         List<BlogPost> olderPosts = BlogPost.find(
             "order by postedAt desc"
         ).from(0).fetch(5);
-        render(frontPost, olderPosts);
+        String randomID = Codec.UUID();
+        render(frontPost, olderPosts,randomID);
     }
-	 public static void postComment(Long postId, @Required String author, @Required String content) {
+	 public static void postComment(Long postId, @Required String author, @Required String content,@Required String code, 
+		        String randomID) {
 	    	
 		 BlogPost post = BlogPost.findById(postId);
+		 validation.equals(
+			        code, Cache.get(randomID));
 	        if (validation.hasErrors()) {
 	        	params.flash();
 	        	validation.keep();
