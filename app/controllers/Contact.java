@@ -5,7 +5,9 @@ import java.util.List;
 import models.ContactComment;
 import models.IndianComment;
 import models.Post;
+import play.cache.Cache;
 import play.data.validation.Required;
+import play.libs.Codec;
 import play.mvc.Controller;
 
 public class Contact extends Controller  {
@@ -13,11 +15,15 @@ public class Contact extends Controller  {
 	public static void contact(){
 		Application.doInitialSetup();
 		 List<ContactComment> contactCommentList = ContactComment.find("order by postedAt desc").fetch();
-    	render(contactCommentList);
+		 String randomID = Codec.UUID();
+    	render(contactCommentList,randomID);
     }
 	
    
-    public static void postComment(@Required String author, @Required String content) {
+    public static void postComment(@Required String author, @Required String content,@Required String code, 
+	        String randomID) {
+    	validation.equals(
+		        code, Cache.get(randomID));
     	if (validation.hasErrors()) {
         	params.flash();
         	validation.keep();
