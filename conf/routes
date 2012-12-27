@@ -53,7 +53,7 @@ GET     /previousMyBlog                                  MyBlog.previousOldPosts
  GET     /contact                                   Contact.contact
 
  
-
+GET     /captcha                                Application.captcha
 
 
 # Ignore favicon requests

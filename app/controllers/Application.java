@@ -1,8 +1,10 @@
 package controllers;
 
 import play.*;
+import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.libs.Images;
 import play.mvc.*;
 
 import java.util.*;
@@ -213,5 +215,10 @@ List<YouthPost> recentPosts=YouthRevolution.getLatestPost();
     	session.put("gutsyguy", gutsyGuy.fullname);
     	session.put("gutsyguyp", gutsyGuy.points);
 	}
-   
+	public static void captcha(String id) {
+	    Images.Captcha captcha = Images.captcha();
+	    String code = captcha.getText("#E4EAFD");
+	    Cache.set(id, code, "10mn");
+	    renderBinary(captcha);
+	}
 }

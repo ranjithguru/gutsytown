@@ -175,7 +175,7 @@ To strive towards excellence in all spheres of individual and collective activit
  #{form @IndianConstitution.postConstitutionComment()}
  #{ifErrors}
         <p class="error">
-            All fields are required!
+            All fields are required! and the code you entered should also match
         </p>
     #{/ifErrors}
     <p>
@@ -186,6 +186,7 @@ To strive towards excellence in all spheres of individual and collective activit
         <label for="content">Your message: </label>
         <textarea name="content" id="content">${flash.content}</textarea>
     </p>
+     #{captcha rID:randomID /}
     <p>
         <input class="submit" type="submit" value="Submit your comment" />
     </p>
