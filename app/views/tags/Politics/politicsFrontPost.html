@@ -1,6 +1,6 @@
 <script  type="text/javascript">
 
- function likeyr(postId){
+ function likept(postId){
 	
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -18,12 +18,12 @@ if (xmlhttp.readyState==4 && xmlhttp.status==200)
   { 
 	  
 	   var likeResponse =JSON.parse(xmlhttp.responseText);
-	   document.getElementById("nooflikesyr").innerHTML="Total Likes : "+ likeResponse.postLikes;
-	   document.getElementById("likemeyr").style.display="none";
+	   document.getElementById("nooflikespt").innerHTML="Total Likes : "+ likeResponse.postLikes;
+	   document.getElementById("likemept").style.display="none";
   }
 }
   var testObj = {id:postId};
-  var listAction = #{jsAction @YouthRevolution.likeThePost(':id') /}
+  var listAction = #{jsAction @Politics.likeThePost(':id') /}
 xmlhttp.open("GET",listAction(testObj),true);
 xmlhttp.send();
 }
@@ -48,18 +48,18 @@ xmlhttp.send();
             </span>
         </div>
          #{if _post.postImage.get()}
-         <div><img alt="criticize politics" src="@{YouthRevolution.getPostImage(_post.id)}"/></div>
+         <div><img alt="politics" src="@{Politics.getPostImage(_post.id)}"/></div>
           #{/if}
         <div class="post-content">
             ${_post.content.nl2br()}
         </div>
-         <div><a class="like" id="likemeyr" href="javaScript:likeyr(${_post.id})">Like</a>
-            <span class="nooflikes" id="nooflikesyr">Total Likes : ${_post.likes}</span>
+         <div><a class="like" id="likemept" href="javaScript:likept(${_post.id})">Like</a>
+            <span class="nooflikes" id="nooflikespt">Total Likes : ${_post.likes}</span>
         
          </div>
           #{if session.get("userid")}
         #{if _post.author.id==session.get("userid").toLong() ||1==session.get("userid").toLong() }
-        <div class="deletepost"><a href="@{YouthRevolution.deletePost(_post.id)}"><span>Delete Post</span></a></div>
+        <div class="deletepost"><a href="@{Politics.deletePost(_post.id)}"><span>Delete Post</span></a></div>
          #{/if}
         #{/if}
 

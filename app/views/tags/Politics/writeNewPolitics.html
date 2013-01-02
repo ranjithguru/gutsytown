@@ -1,29 +1,29 @@
 <script>
 function openForm(){
-	 document.getElementById("outerdivyr").style.visibility= "visible";
-	 document.getElementById("outerdivyr").style.display= "block";
+	 document.getElementById("outerdivpt").style.visibility= "visible";
+	 document.getElementById("outerdivpt").style.display= "block";
 }
 function hideform(){
-	 document.getElementById("outerdivyr").style.visibility= "hidden";
-	 document.getElementById("outerdivyr").style.display= "none";
+	 document.getElementById("outerdivpt").style.visibility= "hidden";
+	 document.getElementById("outerdivpt").style.display= "none";
 }
 function validateNewForm()
 {
-var title=document.forms["newStoryFormyr"]["title"].value;
-var content=document.forms["newStoryFormyr"]["content"].value;
+var title=document.forms["newStoryFormpt"]["title"].value;
+var content=document.forms["newStoryFormpt"]["content"].value;
 
 
 if (title==null || title=="" ||!title.match (/\S/))
   {
   alert("Please Fill Title Field");
-  document.newStoryFormyr.title.focus() ;
+  document.newStoryFormpt.title.focus() ;
   return false;
   }
 
 if (content==null || content==""||!content.match (/\S/))
 {
 alert("Please Fill Content Field");
-document.newStoryFormyr.content.focus() ;
+document.newStoryFormpt.content.focus() ;
 return false;
 }
 
@@ -66,8 +66,8 @@ function checkUser(){
 <a href="javaScript:checkUser()"><span>Write New Post</span></a>
 </div>
 
-<div id="outerdivyr" class="formwrapper">
- <form name="newStoryFormyr" action="@{YouthRevolution.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
+<div id="outerdivpt" class="formwrapper">
+ <form name="newStoryFormpt" action="@{Politics.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
         <div>Title <br/><input class="ntitle" type="text" name="title" /></div><br/> <br/>
         <div> Content <br/><textarea  name="content"> </textarea> </div><br/> 
         <div>Upload Image (Optional Field) <input class ="uploadbutton" type="file" name="imageforpost" ></div><br/> 

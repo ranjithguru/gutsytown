@@ -1,24 +1,24 @@
 #{extends 'main.html' /}
-#{set title:'Criticize Politics' /}
-#{set description: 'You can criticize politics ,politicians and their decisions,their corruptions etc etc in this section.' /}
+#{set title:'Politics' /}
+#{set description: 'Politics,politicians,corruption,youth revolution,lokayuktha.' /}
 #{set 'moreScripts'}
   #{googleAnalytics /}
 #{/set}
-<div class="sectionheading">Criticize Politics</div>
- #{writeNewYouthRevolution /}
+<div class="sectionheading">Politics</div>
+ #{Politics/writeNewPolitics /}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{youthFrontPost post:frontPost /}
+    #{Politics/politicsFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{youthCommentsUI post:frontPost /}
+#{Politics/politicsCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
-#{form @YouthRevolution.postComment(frontPost.id)}
+#{form @Politics.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
-            All fields are required!
+            All fields are required! and the code you entered should also match
         </p>
     #{/ifErrors}
     <p>
@@ -29,6 +29,7 @@
         <label for="content">Your message: </label>
         <textarea name="content" id="content">${flash.content}</textarea>
     </p>
+     #{captcha rID:randomID /}
     <p>
         <input class="submit" type="submit" value="Submit your comment" />
     </p>
@@ -42,7 +43,7 @@
             #{list items:olderPosts, as:'oldPost'}
                 <div class="post">
                     <h2 class="post-title">
-                        <a href="@{YouthRevolution.youthRevolution(oldPost.id)}">${oldPost.title}</a>
+                        <a href="@{Politics.politics(oldPost.id)}">${oldPost.title}</a>
                         %{lastPost=oldPost}%
                     </h2>
                      #{oldPostUiWithoutTitle post:oldPost /}
@@ -57,7 +58,7 @@
      
           #{if lastPost.previous()}
          <div class="paginatebutton">
-         <a href="@{YouthRevolution.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
+         <a href="@{Politics.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
          </div>
          #{/if}
          #{/if}
@@ -65,13 +66,11 @@
           #{if olderPosts}
      #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
       <div class="paginatebutton">
-         <a href="@{YouthRevolution.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         <a href="@{Politics.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
          </div>
          #{/if}
           #{/if}
          
-      
-
 </div>
 #{/if}
  

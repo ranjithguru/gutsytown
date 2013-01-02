@@ -9,10 +9,10 @@ GET     /                                            Application.index
 GET     /indianConstitution                            IndianConstitution.indianConstitution
 
 
-GET     /youthRevolution                                 YouthRevolution.youthRevolution
-GET     /nextOldPostsYouth                              YouthRevolution.nextOldPosts
-POST     /writeNewYouth                              YouthRevolution.writeNew
-GET     /previousYouth                                    YouthRevolution.previousOldPosts
+GET     /politics                                         Politics.politics
+GET     /nextOldPostsPolitics                              Politics.nextOldPosts
+POST     /writeNewPolitics                              Politics.writeNew
+GET     /previousPolitics                                  Politics.previousOldPosts
 
 GET     /decision                                  Decision.decision
 GET     /nextOldPostsDecision                              Decision.nextOldPosts

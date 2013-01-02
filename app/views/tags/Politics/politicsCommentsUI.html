@@ -19,7 +19,7 @@
             </div>
             #{if session.get("userid")}
         #{if 1==session.get("userid").toLong() }
-            <div style="font-size: 10px;"><a href="@{YouthRevolution.deleteComment(comment.id)}">Delete</a></div>
+            <div style="font-size: 10px;"><a href="@{Politics.deleteComment(comment.id)}">Delete</a></div>
             #{/if}
         #{/if}
         #{/list}
