@@ -10,8 +10,10 @@ import models.User;
 
 import com.google.gson.JsonObject;
 
+import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.libs.Codec;
 import play.mvc.Controller;
 
 public class Decision extends Controller {
@@ -28,11 +30,15 @@ public class Decision extends Controller {
         List<DecisionPost> olderPosts = DecisionPost.find(
             "order by postedAt desc"
         ).from(0).fetch(5);
-        render(frontPost, olderPosts);
+        String randomID = Codec.UUID();
+        render(frontPost, olderPosts,randomID);
     }
-	 public static void postComment(Long postId, @Required String author, @Required String content) {
-	    	
+	 public static void postComment(Long postId, @Required String author, @Required String content,@Required String code, 
+		        String randomID) {
+		 validation.equals(
+			        code, Cache.get(randomID));
 		 DecisionPost post = DecisionPost.findById(postId);
+		
 	        if (validation.hasErrors()) {
 	        	params.flash();
 	        	validation.keep();

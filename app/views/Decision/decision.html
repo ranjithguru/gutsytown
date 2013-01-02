@@ -1,24 +1,24 @@
 #{extends 'main.html' /}
 #{set title:'Gutsy Decision' /}
-#{set description: 'In this section You can post your decisions on the given scenario assuming that you are the authority for the given scenario.' /}
+#{set description: 'Gutsy Decision,Opinion,express views,talk proudly.' /}
 #{set 'moreScripts'}
   #{googleAnalytics /}
 #{/set}
 <div class="sectionheading">Your Gutsy Decision</div>
- #{writeNewGutsyDecision /}
+ #{Decision/writeNewGutsyDecision /}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{decisionFrontPost post:frontPost /}
+    #{Decision/decisionFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{decisionCommentsUI post:frontPost /}
+#{Decision/decisionCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post your Decision</h3>
 
 #{form @Decision.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
-            All fields are required!
+            All fields are required! and the code you entered should also match
         </p>
     #{/ifErrors}
     <p>
@@ -29,6 +29,7 @@
         <label for="content">Your message: </label>
         <textarea name="content" id="content">${flash.content}</textarea>
     </p>
+    #{captcha rID:randomID /}
     <p>
         <input class="submit" type="submit" value="Submit your Decision" />
     </p>
