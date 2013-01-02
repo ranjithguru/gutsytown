@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
 @Entity
-public class YouthPost extends Model{
+public class PoliticsPost extends Model{
 	   public String title;
 	    public Date postedAt;
 	    
@@ -28,28 +28,28 @@ public class YouthPost extends Model{
 	    public int likes=0;
 	   
 	    @OneToMany(mappedBy="post", cascade=CascadeType.ALL)
-	    public List<YouthComment> comments;
+	    public List<PoliticsComment> comments;
 	    
-	    public YouthPost(User author, String title, String content,Blob postImage) {
-	    	this.comments = new ArrayList<YouthComment>();
+	    public PoliticsPost(User author, String title, String content,Blob postImage) {
+	    	this.comments = new ArrayList<PoliticsComment>();
 	        this.author = author;
 	        this.title = title;
 	        this.content = content;
 	        this.postImage=postImage;
 	        this.postedAt = new Date();
 	    }
-	    public YouthPost addComment(String author, String content) {
-	    	YouthComment newComment = new YouthComment(this, author, content).save();
+	    public PoliticsPost addComment(String author, String content) {
+	    	PoliticsComment newComment = new PoliticsComment(this, author, content).save();
 	        this.comments.add(newComment);
 	        this.save();
 	        return this;
 	    }
-	    public YouthPost previous() {
-	        return YouthPost.find("postedAt < ? order by postedAt desc", postedAt).first();
+	    public PoliticsPost previous() {
+	        return PoliticsPost.find("postedAt < ? order by postedAt desc", postedAt).first();
 	    }
 	     
-	    public YouthPost next() {
-	        return YouthPost.find("postedAt > ? order by postedAt asc", postedAt).first();
+	    public PoliticsPost next() {
+	        return PoliticsPost.find("postedAt > ? order by postedAt asc", postedAt).first();
 	    }
 	    
 	    public void addLike(){
