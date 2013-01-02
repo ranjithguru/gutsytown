@@ -86,11 +86,11 @@ background:repeat-x center black;
     </div>
 <div class="indexcontainer">
     <div class="box">
-    <a href="@{YouthRevolution.youthRevolution()}"><h1 class="headingbutton">Criticize Politics</h1></a>
+    <a href="@{Politics.politics()}"><h1 class="headingbutton">Politics</h1></a>
      <span class="recent">Recent 5 Posts</span>
      #{if politics}
             #{list items:politics, as:'post'}
-                   <br /><marquee scrollamount="2"><a href="@{YouthRevolution.youthRevolution(post.id)}" class="posttitle">${post.title}</a></marquee>
+                   <br /><marquee scrollamount="2"><a href="@{Politics.politics(post.id)}" class="posttitle">${post.title}</a></marquee>
             #{/list}
     #{/if}
     </div>
