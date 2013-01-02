@@ -16,7 +16,7 @@ public class Application extends Controller {
 	
     public static void index() {
     	doInitialSetup();
-    	List<YouthPost> politics=YouthRevolution.getRecentFivePost();
+    	List<PoliticsPost> politics=Politics.getRecentFivePost();
     	List<DecisionPost> decision=Decision.getRecentFivePost();
     	List<LovePost> love=LoveStory.getRecentFivePost();
     	List<CrushPost> crush=FirstCrush.getRecentFivePost();
@@ -35,6 +35,7 @@ public class Application extends Controller {
     	setGutsyWinnerGirl();
     	setTopThreeGutsyGuys();
     	setTopThreeGutsyGirls();
+    	
     	setRecentSadPosts();
     	setRecentYouthPosts();
     	setRecentCrushPosts();
@@ -139,14 +140,14 @@ public class Application extends Controller {
 
 
 	private static void setRecentYouthPosts() {
-List<YouthPost> recentPosts=YouthRevolution.getLatestPost();
+List<PoliticsPost> recentPosts=Politics.getLatestPost();
 
-  YouthPost post1=recentPosts.get(0);
+  PoliticsPost post1=recentPosts.get(0);
 		if(post1!=null){
 			session.put("youth1",post1.title);
 			session.put("youth1id",post1.id);
 		}
-		YouthPost post2=recentPosts.get(1);
+		PoliticsPost post2=recentPosts.get(1);
 		if(post2!=null){
 		session.put("youth2",post2.title);
 		session.put("youth2id",post2.id);
