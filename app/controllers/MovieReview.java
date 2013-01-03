@@ -7,8 +7,10 @@ import models.MovieComment;
 import models.MoviePost;
 import models.Post;
 import models.User;
+import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.libs.Codec;
 import play.mvc.Controller;
 
 import com.google.gson.JsonObject;
@@ -27,10 +29,13 @@ public class  MovieReview extends Controller {
         List<MoviePost> olderPosts = MoviePost.find(
             "order by postedAt desc"
         ).from(0).fetch(5);
-        render(frontPost, olderPosts);
+        String randomID = Codec.UUID();
+        render(frontPost, olderPosts,randomID);
     }
-	 public static void postComment(Long postId, @Required String author, @Required String content) {
-	    	
+	 public static void postComment(Long postId, @Required String author, @Required String content,@Required String code, 
+		        String randomID) {
+		 validation.equals(
+			        code, Cache.get(randomID));
 		 MoviePost post = MoviePost.findById(postId);
 	        if (validation.hasErrors()) {
 	        	params.flash();

@@ -1,24 +1,24 @@
 #{extends 'main.html' /}
 #{set title:'Movie Reviews' /}
-#{set description: 'In this section you can review the movies which you have seen recently and also new releases.' /}
+#{set description: 'Movie review,gossips,heroes,heroine.movie news,box office.' /}
 #{set 'moreScripts'}
   #{googleAnalytics /}
 #{/set}
-<div class="sectionheading">Movie Reviews</div>
- #{writeNewReview /}
+<div class="sectionheading">Movies</div>
+ #{Movie/writeNewReview /}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{movieFrontPost post:frontPost /}
+    #{Movie/movieFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{movieCommentsUI post:frontPost /}
+#{Movie/movieCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
 #{form @MovieReview.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
-            All fields are required!
+            All fields are required! and the code you entered should also match
         </p>
     #{/ifErrors}
     <p>
@@ -29,6 +29,7 @@
         <label for="content">Your message: </label>
         <textarea name="content" id="content">${flash.content}</textarea>
     </p>
+     #{captcha rID:randomID /}
     <p>
         <input class="submit" type="submit" value="Submit your comment" />
     </p>
