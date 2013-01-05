@@ -14,7 +14,7 @@ import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
-public class CrushPost extends Model {
+public class AutoPost extends Model {
  
     public String title;
     public Date postedAt;
@@ -30,28 +30,28 @@ public class CrushPost extends Model {
     public int likes=0;
    
     @OneToMany(mappedBy="post", cascade=CascadeType.ALL)
-    public List<CrushComment> comments;
+    public List<AutoComment> comments;
     
-    public CrushPost(User author, String title, String content,Blob postImage) {
-    	this.comments = new ArrayList<CrushComment>();
+    public AutoPost(User author, String title, String content,Blob postImage) {
+    	this.comments = new ArrayList<AutoComment>();
         this.author = author;
         this.title = title;
         this.content = content;
         this.postImage=postImage;
         this.postedAt = new Date();
     }
-    public CrushPost addComment(String author, String content) {
-        CrushComment newComment = new CrushComment(this, author, content).save();
+    public AutoPost addComment(String author, String content) {
+        AutoComment newComment = new AutoComment(this, author, content).save();
         this.comments.add(newComment);
         this.save();
         return this;
     }
-    public CrushPost previous() {
-        return CrushPost.find("postedAt < ? order by postedAt desc", postedAt).first();
+    public AutoPost previous() {
+        return AutoPost.find("postedAt < ? order by postedAt desc", postedAt).first();
     }
      
-    public CrushPost next() {
-        return CrushPost.find("postedAt > ? order by postedAt asc", postedAt).first();
+    public AutoPost next() {
+        return AutoPost.find("postedAt > ? order by postedAt asc", postedAt).first();
     }
     
     public void addLike(){

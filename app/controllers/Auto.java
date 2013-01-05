@@ -3,90 +3,95 @@ package controllers;
 import java.util.List;
 
 import models.Comment;
-import models.CrushComment;
-import models.CrushPost;
+import models.AutoComment;
+import models.AutoPost;
 import models.Post;
 import models.User;
+import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.libs.Codec;
 import play.mvc.Controller;
 
 import com.google.gson.JsonObject;
 
-public class FirstCrush extends Controller {
+public class Auto extends Controller {
 	
-	public static void firstCrush(Long id) {
+	public static void auto(Long id) {
 		Application.doInitialSetup();
-    	CrushPost frontPost;
+    	AutoPost frontPost;
     	if(id!=null){
-    		frontPost =CrushPost.findById(id);
+    		frontPost =AutoPost.findById(id);
     	}
     	else{
-    		frontPost = CrushPost.find("order by postedAt desc").first();
+    		frontPost = AutoPost.find("order by postedAt desc").first();
     	}
-        List<CrushPost> olderPosts = CrushPost.find(
+        List<AutoPost> olderPosts = AutoPost.find(
             "order by postedAt desc"
         ).from(0).fetch(5);
-        render(frontPost, olderPosts);
+        String randomID = Codec.UUID();
+        render(frontPost, olderPosts,randomID);
     }
-	 public static void postComment(Long postId, @Required String author, @Required String content) {
-	    	
-		 CrushPost post = CrushPost.findById(postId);
+	 public static void postComment(Long postId, @Required String author, @Required String content,@Required String code, 
+		        String randomID) {
+		 validation.equals(
+			        code, Cache.get(randomID));
+		 AutoPost post = AutoPost.findById(postId);
 	        if (validation.hasErrors()) {
 	        	params.flash();
 	        	validation.keep();
-	        	firstCrush(postId);
+	        	auto(postId);
 	        	 
 	        }
 	        post.addComment(author, content);
-	        firstCrush(postId);
+	        auto(postId);
 	    }
 	 
     public static void nextOldPosts(Long frontPostId,Long lastPostId){    	
-    	CrushPost frontPost =CrushPost.findById(frontPostId);
-    	CrushPost lastPost=CrushPost.findById(lastPostId);
-    	List<CrushPost> olderPosts = CrushPost.find(
+    	AutoPost frontPost =AutoPost.findById(frontPostId);
+    	AutoPost lastPost=AutoPost.findById(lastPostId);
+    	List<AutoPost> olderPosts = AutoPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/FirstCrush/firstCrush.html",frontPost, olderPosts);
+    	renderTemplate("app/views/Auto/auto.html",frontPost, olderPosts);
     	
     }
     
     public static void previousOldPosts(Long frontPostId,Long lastPostId){    	
-    	CrushPost frontPost =CrushPost.findById(frontPostId);
-    	CrushPost lastPost=CrushPost.findById(lastPostId);
-    	List<CrushPost> olderPosts = CrushPost.find(
+    	AutoPost frontPost =AutoPost.findById(frontPostId);
+    	AutoPost lastPost=AutoPost.findById(lastPostId);
+    	List<AutoPost> olderPosts = AutoPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/FirstCrush/firstCrush.html",frontPost, olderPosts);
+    	renderTemplate("app/views/Auto/auto.html",frontPost, olderPosts);
     	
     }
     
     public static void writeNew(String title,String content,Blob imageforpost){
     	Long userId=Long.parseLong(session.get("userid"));
     	User author= User.findById(userId);
-    	new CrushPost(author, title, content, imageforpost).save();
-    	firstCrush(null);
+    	new AutoPost(author, title, content, imageforpost).save();
+    	auto(null);
     }
     
     public static void getPostImage(long id) {
-    	   final CrushPost post = CrushPost.findById(id);
+    	   final AutoPost post = AutoPost.findById(id);
     	   notFoundIfNull(post);
     	   response.setContentTypeIfNotSet(post.postImage.type());
     	   renderBinary(post.postImage.get());
     	}
     public static void deletePost(long id){
-    	final CrushPost post = CrushPost.findById(id);
+    	final AutoPost post = AutoPost.findById(id);
     	post.delete();
-    	firstCrush(null);
+    	auto(null);
     }
     public static void deleteComment(long id){
-    	final CrushComment comment = CrushComment.findById(id);
+    	final AutoComment comment = AutoComment.findById(id);
     	comment.delete();
-    	firstCrush(null);
+    	auto(null);
     }
     public static void likeThePost(long id){
-    	final CrushPost post = CrushPost.findById(id);
+    	final AutoPost post = AutoPost.findById(id);
     	post.addLike();
     	User user=post.author;
     	user.addPoint();
@@ -96,12 +101,12 @@ public class FirstCrush extends Controller {
     	 renderJSON(jsObject.toString());
     }
     
- public static List<CrushPost> getLatestPost(){
-	 List<CrushPost> recentPosts =CrushPost.find("order by postedAt desc").from(0).fetch(2);
+ public static List<AutoPost> getLatestPost(){
+	 List<AutoPost> recentPosts =AutoPost.find("order by postedAt desc").from(0).fetch(2);
 	 return recentPosts;
  }
- public static List<CrushPost> getRecentFivePost(){
-	 List<CrushPost> recentPosts =CrushPost.find("order by postedAt desc").from(0).fetch(5);
+ public static List<AutoPost> getRecentFivePost(){
+	 List<AutoPost> recentPosts =AutoPost.find("order by postedAt desc").from(0).fetch(5);
 	 return recentPosts;
  }
 }

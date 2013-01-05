@@ -1,24 +1,24 @@
 #{extends 'main.html' /}
-#{set title:'First Crush' /}
-#{set description: 'You can post beautiful experience of first crush in your lives on this section ' /}
+#{set title:'Automobile' /}
+#{set description: 'cars,bikes,car race,tyres,bike race,train,bus ' /}
 #{set 'moreScripts'}
   #{googleAnalytics /}
 #{/set}
-<div class="sectionheading">First Crush</div>
- #{writeNewFirstCrush /}
+<div class="sectionheading">Automobile</div>
+ #{auto/writeNewAuto /}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{crushFrontPost post:frontPost /}
+    #{auto/autoFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{crushCommentsUI post:frontPost /}
+#{auto/autoCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
-#{form @FirstCrush.postComment(frontPost.id)}
+#{form @Auto.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
-            All fields are required!
+             All fields are required! and the code you entered should also match
         </p>
     #{/ifErrors}
     <p>
@@ -29,6 +29,7 @@
         <label for="content">Your message: </label>
         <textarea name="content" id="content">${flash.content}</textarea>
     </p>
+    #{captcha rID:randomID /}
     <p>
         <input class="submit" type="submit" value="Submit your comment" />
     </p>
@@ -42,7 +43,7 @@
             #{list items:olderPosts, as:'oldPost'}
                 <div class="post">
                     <h2 class="post-title">
-                        <a href="@{FirstCrush.firstCrush(oldPost.id)}">${oldPost.title}</a>
+                        <a href="@{Auto.auto(oldPost.id)}">${oldPost.title}</a>
                         %{lastPost=oldPost}%
                     </h2>
                      #{oldPostUiWithoutTitle post:oldPost /}
@@ -57,7 +58,7 @@
      
           #{if lastPost.previous()}
          <div class="paginatebutton">
-         <a href="@{FirstCrush.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
+         <a href="@{Auto.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
          </div>
          #{/if}
          #{/if}
@@ -65,7 +66,7 @@
           #{if olderPosts}
      #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
       <div class="paginatebutton">
-         <a href="@{FirstCrush.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         <a href="@{Auto.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
          </div>
          #{/if}
           #{/if}

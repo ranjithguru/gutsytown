@@ -25,10 +25,10 @@ GET     /nextOldPostsSad                              YourStory.nextOldPosts
 POST     /writeNewSadStory                          YourStory.writeNew
 GET     /previousSad                                    YourStory.previousOldPosts
  
- GET     /firstCrush                                  FirstCrush.firstCrush
-GET     /nextOldPostsCrush                              FirstCrush.nextOldPosts
-POST     /writeNewCrush                                   FirstCrush.writeNew
-GET     /previousCrush                                    FirstCrush.previousOldPosts
+ GET     /auto                                          Auto.auto
+GET     /nextOldPostsAuto                              Auto.nextOldPosts
+POST     /writeNewAuto                                   Auto.writeNew
+GET     /previousAuto                                    Auto.previousOldPosts
 
 GET     /lovestory                                   LoveStory.loveStory
 GET     /nextOldPostsLove                             LoveStory.nextOldPosts

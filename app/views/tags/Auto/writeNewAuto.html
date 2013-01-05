@@ -50,7 +50,7 @@ function checkUser(){
    		    openForm();
    		   }
    	   else{
-   		   alert("You Should Login to Write Stories");
+   		   alert("You Should Login to Write Posts");
    	   }
   
            }
@@ -63,15 +63,15 @@ function checkUser(){
 </script>
 
 <div class="newpost">
-<a href="javaScript:checkUser()"><span>Write First Crush</span></a>
+<a href="javaScript:checkUser()"><span>Write New Post</span></a>
 </div>
 
 <div id="outerdivfc" class="formwrapper">
- <form name="newStoryFormfc" action="@{FirstCrush.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
+ <form name="newStoryFormfc" action="@{Auto.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
         <div>Title <br/><input class="ntitle" type="text" name="title" /></div><br/> <br/>
         <div> Content <br/><textarea  name="content"> </textarea> </div><br/> 
         <div>Upload Image (Optional Field) <input class ="uploadbutton" type="file" name="imageforpost" ></div><br/> 
-        <div> <input class="nsubmit" type="submit" value="Post Your Crush" /></div>
+        <div> <input class="nsubmit" type="submit" value="Post Auto" /></div>
          <div><input class="nsubmit" type="button" value="Cancel" onclick="javaScript:hideform()"/></div>
          </form>
 </div>

@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import play.db.jpa.Model;
 
 @Entity
-public class CrushComment extends Model {
+public class AutoComment extends Model {
  
     public String author;
     public Date postedAt;
@@ -18,9 +18,9 @@ public class CrushComment extends Model {
     public String content;
     
     @ManyToOne
-    public CrushPost post;
+    public AutoPost post;
     
-    public CrushComment(CrushPost post, String author, String content) {
+    public AutoComment(AutoPost post, String author, String content) {
         this.post = post;
         this.author = author;
         this.content = content;

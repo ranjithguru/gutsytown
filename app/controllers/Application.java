@@ -19,11 +19,11 @@ public class Application extends Controller {
     	List<PoliticsPost> politics=Politics.getRecentFivePost();
     	List<DecisionPost> decision=Decision.getRecentFivePost();
     	List<LovePost> love=LoveStory.getRecentFivePost();
-    	List<CrushPost> crush=FirstCrush.getRecentFivePost();
-    	List<Post> sad=YourStory.getRecentFivePost();
+    	List<AutoPost> auto=Auto.getRecentFivePost();
+    	List<Post> yourStory=YourStory.getRecentFivePost();
     	List<MoviePost> movie=MovieReview.getRecentFivePost();
     	List<BlogPost> blog=MyBlog.getRecentFivePost();
-        render(politics,decision,love,crush,sad,movie,blog);
+        render(politics,decision,love,auto,yourStory,movie,blog);
     }
     
   
@@ -122,14 +122,14 @@ public class Application extends Controller {
 
 
 	private static void setRecentCrushPosts() {
-		List<CrushPost> recentPosts=FirstCrush.getLatestPost();
+		List<AutoPost> recentPosts=Auto.getLatestPost();
 
-		CrushPost post1=recentPosts.get(0);
+		AutoPost post1=recentPosts.get(0);
 				if(post1!=null){
 					session.put("crush1",post1.title);
 					session.put("crush1id",post1.id);
 				}
-				CrushPost post2=recentPosts.get(1);
+				AutoPost post2=recentPosts.get(1);
 				if(post2!=null){
 				session.put("crush2",post2.title);
 				session.put("crush2id",post2.id);

@@ -108,8 +108,8 @@ background:repeat-x center black;
      <div class="box">
     <a href="@{YourStory.yourStory()}"><h1 class="headingbutton">Your Story</h1></a>
    <span class="recent">Recent 5 Posts</span>
-     #{if sad}
-            #{list items:sad, as:'post'}
+     #{if yourStory}
+            #{list items:yourStory, as:'post'}
                     
                       <br /><marquee scrollamount="2"> <a href="@{YourStory.yourStory(post.id)}" class="posttitle">${post.title}</a></marquee>
                     
@@ -118,11 +118,11 @@ background:repeat-x center black;
     </div>
    
      <div class="box">
-   <a href="@{FirstCrush.firstCrush()}"><h1 class="headingbutton">Your First Crush</h1></a>
+   <a href="@{Auto.auto()}"><h1 class="headingbutton">Automobile</h1></a>
    <span class="recent">Recent 5 Posts</span>
-    #{if crush}
-            #{list items:crush, as:'post'}  
-                     <br /><marquee scrollamount="2"> <a href="@{FirstCrush.firstCrush(post.id)}" class="posttitle">${post.title}</a></marquee>
+    #{if auto}
+            #{list items:auto, as:'post'}  
+                     <br /><marquee scrollamount="2"> <a href="@{Auto.auto(post.id)}" class="posttitle">${post.title}</a></marquee>
             #{/list}
     #{/if}
     </div>
