@@ -1,24 +1,24 @@
 #{extends 'main.html' /}
-#{set title:'Love Stories' /}
-#{set description: 'In this section you can post your love stories or love stories which you have come across.' /}
+#{set title:'Your Travel' /}
+#{set description: 'Write your travel experiences' /}
 #{set 'moreScripts'}
   #{googleAnalytics /}
 #{/set}
-<div class="sectionheading">Love Stories</div>
- #{writeNewLoveStory /}
+<div class="sectionheading">Your Travel Story</div>
+ #{Travel/writeNewTravelStory /}
  <hr class="horizontalline"/>
  #{if frontPost}
-     #{loveFrontPost post:frontPost /}
+     #{Travel/travelFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{loveCommentsUI post:frontPost /}
+#{Travel/travelCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
-#{form @LoveStory.postComment(frontPost.id)}
+#{form @Travel.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
-            All fields are required!
+            All fields are required! and the code you entered should also match
         </p>
     #{/ifErrors}
     <p>
@@ -29,6 +29,7 @@
         <label for="content">Your message: </label>
         <textarea name="content" id="content">${flash.content}</textarea>
     </p>
+     #{captcha rID:randomID /}
     <p>
         <input class="submit" type="submit" value="Submit your comment" />
     </p>
@@ -42,7 +43,7 @@
             #{list items:olderPosts, as:'oldPost'}
                 <div class="post">
                     <h2 class="post-title">
-                        <a href="@{LoveStory.loveStory(oldPost.id)}">${oldPost.title}</a>
+                        <a href="@{Travel.travel(oldPost.id)}">${oldPost.title}</a>
                         %{lastPost=oldPost}%
                     </h2>
                      #{oldPostUiWithoutTitle post:oldPost /}
@@ -57,7 +58,7 @@
      
           #{if lastPost.previous()}
          <div class="paginatebutton">
-         <a href="@{loveStory.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
+         <a href="@{Travel.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
          </div>
          #{/if}
          #{/if}
@@ -65,7 +66,7 @@
           #{if olderPosts}
      #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
       <div class="paginatebutton">
-         <a href="@{loveStory.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         <a href="@{Travel.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
          </div>
          #{/if}
           #{/if}

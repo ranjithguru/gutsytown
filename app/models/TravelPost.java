@@ -14,7 +14,7 @@ import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
-public class LovePost extends Model {
+public class TravelPost extends Model {
  
     public String title;
     public Date postedAt;
@@ -30,28 +30,28 @@ public class LovePost extends Model {
     public int likes=0;
    
     @OneToMany(mappedBy="post", cascade=CascadeType.ALL)
-    public List<LoveComment> comments;
+    public List<TravelComment> comments;
     
-    public LovePost(User author, String title, String content,Blob postImage) {
-    	this.comments = new ArrayList<LoveComment>();
+    public TravelPost(User author, String title, String content,Blob postImage) {
+    	this.comments = new ArrayList<TravelComment>();
         this.author = author;
         this.title = title;
         this.content = content;
         this.postImage=postImage;
         this.postedAt = new Date();
     }
-    public LovePost addComment(String author, String content) {
-    	LoveComment newComment = new LoveComment(this, author, content).save();
+    public TravelPost addComment(String author, String content) {
+    	TravelComment newComment = new TravelComment(this, author, content).save();
         this.comments.add(newComment);
         this.save();
         return this;
     }
-    public LovePost previous() {
-        return LovePost.find("postedAt < ? order by postedAt desc", postedAt).first();
+    public TravelPost previous() {
+        return TravelPost.find("postedAt < ? order by postedAt desc", postedAt).first();
     }
      
-    public LovePost next() {
-        return LovePost.find("postedAt > ? order by postedAt asc", postedAt).first();
+    public TravelPost next() {
+        return TravelPost.find("postedAt > ? order by postedAt asc", postedAt).first();
     }
     
     public void addLike(){

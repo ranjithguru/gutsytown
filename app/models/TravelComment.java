@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import play.db.jpa.Model;
 
 @Entity
-public class LoveComment extends Model {
+public class TravelComment extends Model {
  
     public String author;
     public Date postedAt;
@@ -18,9 +18,9 @@ public class LoveComment extends Model {
     public String content;
     
     @ManyToOne
-    public LovePost post;
+    public TravelPost post;
     
-    public LoveComment(LovePost post, String author, String content) {
+    public TravelComment(TravelPost post, String author, String content) {
         this.post = post;
         this.author = author;
         this.content = content;

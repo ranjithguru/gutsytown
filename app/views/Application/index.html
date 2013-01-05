@@ -128,12 +128,12 @@ background:repeat-x center black;
     </div>
     
      <div class="box">
-   <a href="@{LoveStory.loveStory()}"><h1 class="headingbutton">Your Love Story</h1></a>
+   <a href="@{LoveStory.loveStory()}"><h1 class="headingbutton">Your Travel</h1></a>
    <span class="recent">Recent 5 Posts</span>
-    #{if love}
-            #{list items:love, as:'post'}
+    #{if travel}
+            #{list items:travel, as:'post'}
                     
-                       <br /><marquee scrollamount="2"><a href="@{LoveStory.loveStory(post.id)}" class="posttitle">${post.title}</a></marquee>
+                       <br /><marquee scrollamount="2"><a href="@{Travel.travel(post.id)}" class="posttitle">${post.title}</a></marquee>
                     
             #{/list}
     #{/if}

@@ -29,11 +29,11 @@ GET     /previousSad                                    YourStory.previousOldPos
 GET     /nextOldPostsAuto                              Auto.nextOldPosts
 POST     /writeNewAuto                                   Auto.writeNew
 GET     /previousAuto                                    Auto.previousOldPosts
-
-GET     /lovestory                                   LoveStory.loveStory
-GET     /nextOldPostsLove                             LoveStory.nextOldPosts
-POST     /writeNewLoveStory                           LoveStory.writeNew
-GET     /previousLove                                    LoveStory.previousOldPosts
+ 
+GET     /travel                                          Travel.travel
+GET     /nextOldPostsTravel                             Travel.nextOldPosts
+POST     /writeNewTravel                                  Travel.writeNew
+GET     /previousTravel                                    Travel.previousOldPosts
 
 
 GET     /movieReview                                   MovieReview.movieReview
@@ -43,9 +43,9 @@ GET     /previousMovie                                  MovieReview.previousOldP
 
 
 GET     /myBlog                                       MyBlog.myBlog
-GET     /nextOldPostsMyBlog                             MyBlog.nextOldPosts
-POST     /writeNewMyBlog                               MyBlog.writeNew
-GET     /previousMyBlog                                  MyBlog.previousOldPosts
+GET     /nextOldPostsMyBlog                           MyBlog.nextOldPosts
+POST    /writeNewMyBlog                               MyBlog.writeNew
+GET     /previousMyBlog                               MyBlog.previousOldPosts
 
 
  GET     /gutsyPolls                                   GutsyPolls.gutsyPolls

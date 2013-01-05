@@ -23,7 +23,7 @@ if (xmlhttp.readyState==4 && xmlhttp.status==200)
   }
 }
   var testObj = {id:postId};
-  var listAction = #{jsAction @LoveStory.likeThePost(':id') /}
+  var listAction = #{jsAction @Travel.likeThePost(':id') /}
 xmlhttp.open("GET",listAction(testObj),true);
 xmlhttp.send();
 }
@@ -48,7 +48,7 @@ xmlhttp.send();
             </span>
         </div>
          #{if _post.postImage.get()}
-         <div><img alt="love story" src="@{LoveStory.getPostImage(_post.id)}"/></div>
+         <div><img alt="love story" src="@{Travel.getPostImage(_post.id)}"/></div>
           #{/if}
         <div class="post-content">
             ${_post.content.nl2br()}
@@ -59,7 +59,7 @@ xmlhttp.send();
          </div>
           #{if session.get("userid")}
         #{if _post.author.id==session.get("userid").toLong() ||1==session.get("userid").toLong() }
-        <div class="deletepost"><a href="@{LoveStory.deletePost(_post.id)}"><span>Delete Post</span></a></div>
+        <div class="deletepost"><a href="@{Travel.deletePost(_post.id)}"><span>Delete Post</span></a></div>
          #{/if}
         #{/if}
 
