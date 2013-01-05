@@ -63,15 +63,15 @@ function checkUser(){
 </script>
 
 <div class="newpost">
-<a href="javaScript:checkUser()"><span>Write Sad Story</span></a>
+<a href="javaScript:checkUser()"><span>Write Your Story</span></a>
 </div>
 
 <div id="outerdiv" class="formwrapper">
- <form name="newStoryForm" action="@{SadStory.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
+ <form name="newStoryForm" action="@{YourStory.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
         <div>Title <br/><input class="ntitle" type="text" name="title" /></div><br/> <br/>
         <div> Content <br/><textarea  name="content"> </textarea> </div><br/> 
         <div>Upload Image (Optional Field) <input class ="uploadbutton" type="file" name="imageforpost" ></div><br/> 
-        <div> <input class="nsubmit" type="submit" value="Post Sad Story" /></div>
+        <div> <input class="nsubmit" type="submit" value="Post Your Story" /></div>
          <div><input class="nsubmit" type="button" value="Cancel" onclick="javaScript:hideform()"/></div>
          </form>
 </div>

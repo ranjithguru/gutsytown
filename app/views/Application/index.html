@@ -106,12 +106,12 @@ background:repeat-x center black;
     </div>
     
      <div class="box">
-    <a href="@{SadStory.sadStory()}"><h1 class="headingbutton">Your Sad Story</h1></a>
+    <a href="@{YourStory.yourStory()}"><h1 class="headingbutton">Your Story</h1></a>
    <span class="recent">Recent 5 Posts</span>
      #{if sad}
             #{list items:sad, as:'post'}
                     
-                      <br /><marquee scrollamount="2"> <a href="@{SadStory.sadStory(post.id)}" class="posttitle">${post.title}</a></marquee>
+                      <br /><marquee scrollamount="2"> <a href="@{YourStory.yourStory(post.id)}" class="posttitle">${post.title}</a></marquee>
                     
             #{/list}
     #{/if}
@@ -140,7 +140,7 @@ background:repeat-x center black;
     </div>
    
      <div class="box">
-   <a href="@{MovieReview.movieReview()}"><h1 class="headingbutton">Review Movies</h1></a>
+   <a href="@{MovieReview.movieReview()}"><h1 class="headingbutton">Movies</h1></a>
    <span class="recent">Recent 5 Posts</span>
     #{if movie}
             #{list items:movie, as:'post'}

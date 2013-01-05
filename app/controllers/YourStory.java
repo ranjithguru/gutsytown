@@ -8,13 +8,15 @@ import com.google.gson.JsonObject;
 import models.Comment;
 import models.Post;
 import models.User;
+import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.libs.Codec;
 import play.mvc.Controller;
 
-public class SadStory extends Controller {
+public class YourStory extends Controller {
 	
-	public static void sadStory(Long id) {
+	public static void yourStory(Long id) {
 		Application.doInitialSetup();
     	Post frontPost;
     	if(id!=null){
@@ -26,19 +28,22 @@ public class SadStory extends Controller {
         List<Post> olderPosts = Post.find(
             "order by postedAt desc"
         ).from(0).fetch(5);
-        render(frontPost, olderPosts);
+        String randomID = Codec.UUID();
+        render(frontPost, olderPosts,randomID);
     }
-	 public static void postComment(Long postId, @Required String author, @Required String content) {
-	    	
+	 public static void postComment(Long postId, @Required String author, @Required String content,@Required String code, 
+		        String randomID) {
+		 validation.equals(
+			        code, Cache.get(randomID));
 	        Post post = Post.findById(postId);
 	        if (validation.hasErrors()) {
 	        	params.flash();
 	        	validation.keep();
-	        	sadStory(postId);
+	        	yourStory(postId);
 	        	 
 	        }
 	        post.addComment(author, content);
-	        sadStory(postId);
+	        yourStory(postId);
 	    }
 	 
     public static void nextOldPosts(Long frontPostId,Long lastPostId){    	
@@ -47,7 +52,7 @@ public class SadStory extends Controller {
     	List<Post> olderPosts = Post.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/SadStory/sadStory.html",frontPost, olderPosts);
+    	renderTemplate("app/views/YourStory/yourStory.html",frontPost, olderPosts);
     	
     }
     
@@ -57,7 +62,7 @@ public class SadStory extends Controller {
     	List<Post> olderPosts = Post.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/SadStory/sadStory.html",frontPost, olderPosts);
+    	renderTemplate("app/views/YourStory/yourStory.html",frontPost, olderPosts);
     	
     }
     
@@ -65,7 +70,7 @@ public class SadStory extends Controller {
     	Long userId=Long.parseLong(session.get("userid"));
     	User author= User.findById(userId);
     	new Post(author, title, content, imageforpost).save();
-    	sadStory(null);
+    	yourStory(null);
     }
     
     public static void getPostImage(long id) {
@@ -77,12 +82,12 @@ public class SadStory extends Controller {
     public static void deletePost(long id){
     	final Post post = Post.findById(id);
     	post.delete();
-    	sadStory(null);
+    	yourStory(null);
     }
     public static void deleteComment(long id){
     	final Comment comment = Comment.findById(id);
     	comment.delete();
-    	sadStory(null);
+    	yourStory(null);
     }
     public static void likeThePost(long id){
     	final Post post = Post.findById(id);

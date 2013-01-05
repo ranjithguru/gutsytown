@@ -14,16 +14,16 @@ GET     /nextOldPostsPolitics                              Politics.nextOldPosts
 POST     /writeNewPolitics                              Politics.writeNew
 GET     /previousPolitics                                  Politics.previousOldPosts
 
-GET     /decision                                  Decision.decision
+GET     /decision                                        Decision.decision
 GET     /nextOldPostsDecision                              Decision.nextOldPosts
 POST     /writeNewDecisionStory                          Decision.writeNew
 GET     /previousDecision                                    Decision.previousOldPosts
 
 
-GET     /sadstory                                  SadStory.sadStory
-GET     /nextOldPostsSad                              SadStory.nextOldPosts
-POST     /writeNewSadStory                          SadStory.writeNew
-GET     /previousSad                                    SadStory.previousOldPosts
+GET     /story                                  YourStory.yourStory
+GET     /nextOldPostsSad                              YourStory.nextOldPosts
+POST     /writeNewSadStory                          YourStory.writeNew
+GET     /previousSad                                    YourStory.previousOldPosts
  
  GET     /firstCrush                                  FirstCrush.firstCrush
 GET     /nextOldPostsCrush                              FirstCrush.nextOldPosts
@@ -42,7 +42,7 @@ POST     /writeNewreview                               MovieReview.writeNew
 GET     /previousMovie                                  MovieReview.previousOldPosts
 
 
-GET     /myBlog                                   MyBlog.myBlog
+GET     /myBlog                                       MyBlog.myBlog
 GET     /nextOldPostsMyBlog                             MyBlog.nextOldPosts
 POST     /writeNewMyBlog                               MyBlog.writeNew
 GET     /previousMyBlog                                  MyBlog.previousOldPosts

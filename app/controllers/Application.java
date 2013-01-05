@@ -20,7 +20,7 @@ public class Application extends Controller {
     	List<DecisionPost> decision=Decision.getRecentFivePost();
     	List<LovePost> love=LoveStory.getRecentFivePost();
     	List<CrushPost> crush=FirstCrush.getRecentFivePost();
-    	List<Post> sad=SadStory.getRecentFivePost();
+    	List<Post> sad=YourStory.getRecentFivePost();
     	List<MoviePost> movie=MovieReview.getRecentFivePost();
     	List<BlogPost> blog=MyBlog.getRecentFivePost();
         render(politics,decision,love,crush,sad,movie,blog);
@@ -158,7 +158,7 @@ List<PoliticsPost> recentPosts=Politics.getLatestPost();
 
 
 	private static void setRecentSadPosts() {
-		List<Post> recentPosts=SadStory.getLatestPost();
+		List<Post> recentPosts=YourStory.getLatestPost();
 		
 		Post post1=recentPosts.get(0);
 		if(post1!=null){
