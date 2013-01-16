@@ -3,43 +3,81 @@
 # ~~~~
 
 # Home page
-GET     /                                            Application.index
- GET     /gytsyWinner                               Application.gutsyGuyWinner
+GET     /                                          Application.index
+GET     /gytsyWinner                               Application.gutsyGuyWinner
 
-GET     /indianConstitution                            IndianConstitution.indianConstitution
-
-
-GET     /politics                                         Politics.politics
-GET     /nextOldPostsPolitics                              Politics.nextOldPosts
-POST     /writeNewPolitics                              Politics.writeNew
-GET     /previousPolitics                                  Politics.previousOldPosts
-
-GET     /decision                                        Decision.decision
-GET     /nextOldPostsDecision                              Decision.nextOldPosts
-POST     /writeNewDecisionStory                          Decision.writeNew
-GET     /previousDecision                                    Decision.previousOldPosts
+GET     /indianConstitution                        IndianConstitution.indianConstitution
 
 
-GET     /story                                  YourStory.yourStory
-GET     /nextOldPostsSad                              YourStory.nextOldPosts
-POST     /writeNewSadStory                          YourStory.writeNew
-GET     /previousSad                                    YourStory.previousOldPosts
+GET     /politics                                   Politics.politics
+GET     /nextOldPostsPolitics                       Politics.nextOldPosts
+POST    /writeNewPolitics                           Politics.writeNew
+GET     /previousPolitics                           Politics.previousOldPosts
+
+GET     /decision                                   Decision.decision
+GET     /nextOldPostsDecision                       Decision.nextOldPosts
+POST    /writeNewDecisionStory                      Decision.writeNew
+GET     /previousDecision                           Decision.previousOldPosts
+
+GET     /health                                     Health.health
+GET     /nextOldPostsHealth                         Health.nextOldPosts
+POST    /writeNewHealth                             Health.writeNew
+GET     /previousHealth                             Health.previousOldPosts
+
+GET     /food                                        Food.food
+GET     /nextOldPostsFood                            Food.nextOldPosts
+POST    /writeNewFood                                Food.writeNew
+GET     /previousFood                                Food.previousOldPosts
+
+GET     /beauty                                      Beauty.beauty
+GET     /nextOldPostsBeauty                          Beauty.nextOldPosts
+POST    /writeNewBeauty                              Beauty.writeNew
+GET     /previousBeauty                              Beauty.previousOldPosts
+
+GET     /money                                       Money.money
+GET     /nextOldPostsMoney                           Money.nextOldPosts
+POST    /writeNewMoney                               Money.writeNew
+GET     /previousMoney                               Money.previousOldPosts
+
+
+GET     /tech                                        Tech.tech
+GET     /nextOldPostsTech                            Tech.nextOldPosts
+POST    /writeNewTech                                Tech.writeNew
+GET     /previousTech                                Tech.previousOldPosts
+
+GET     /sport                                       Sport.sport
+GET     /nextOldPostsSport                           Sport.nextOldPosts
+POST    /writeNewSport                               Sport.writeNew
+GET     /previousSport                               Sport.previousOldPosts
+
+GET     /job                                        Job.job
+GET     /nextOldPostsJob                            Job.nextOldPosts
+POST    /writeNewJob                                Job.writeNew
+GET     /previousJob                                Job.previousOldPosts
+
+
+
+
+GET     /story                                       YourStory.yourStory
+GET     /nextOldPostsSad                             YourStory.nextOldPosts
+POST    /writeNewSadStory                            YourStory.writeNew
+GET     /previousSad                                 YourStory.previousOldPosts
  
- GET     /auto                                          Auto.auto
-GET     /nextOldPostsAuto                              Auto.nextOldPosts
-POST     /writeNewAuto                                   Auto.writeNew
-GET     /previousAuto                                    Auto.previousOldPosts
+ GET    /auto                                        Auto.auto
+GET     /nextOldPostsAuto                            Auto.nextOldPosts
+POST    /writeNewAuto                                Auto.writeNew
+GET     /previousAuto                                Auto.previousOldPosts
  
-GET     /travel                                          Travel.travel
-GET     /nextOldPostsTravel                             Travel.nextOldPosts
-POST     /writeNewTravel                                  Travel.writeNew
-GET     /previousTravel                                    Travel.previousOldPosts
+GET     /travel                                       Travel.travel
+GET     /nextOldPostsTravel                           Travel.nextOldPosts
+POST    /writeNewTravel                               Travel.writeNew
+GET     /previousTravel                               Travel.previousOldPosts
 
 
-GET     /movieReview                                   MovieReview.movieReview
-GET     /nextOldPostsMovie                             MovieReview.nextOldPosts
-POST     /writeNewreview                               MovieReview.writeNew
-GET     /previousMovie                                  MovieReview.previousOldPosts
+GET     /movieReview                                  MovieReview.movieReview
+GET     /nextOldPostsMovie                            MovieReview.nextOldPosts
+POST    /writeNewreview                               MovieReview.writeNew
+GET     /previousMovie                                MovieReview.previousOldPosts
 
 
 GET     /myBlog                                       MyBlog.myBlog

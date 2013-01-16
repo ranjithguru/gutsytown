@@ -1,0 +1,66 @@
+<script  type="text/javascript">
+
+ function likebt(postId){
+	
+var xmlhttp;
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+ xmlhttp.onreadystatechange=function()
+{
+if (xmlhttp.readyState==4 && xmlhttp.status==200)
+  { 
+	  
+	   var likeResponse =JSON.parse(xmlhttp.responseText);
+	   document.getElementById("nooflikesbt").innerHTML="Total Likes : "+ likeResponse.postLikes;
+	   document.getElementById("likemebt").style.display="none";
+  }
+}
+  var testObj = {id:postId};
+  var listAction = #{jsAction @Beauty.likeThePost(':id') /}
+xmlhttp.open("GET",listAction(testObj),true);
+xmlhttp.send();
+}
+</script>
+#{shareButtons /}
+ <div class="post">
+        <h2 class="post-title">
+            <a href="">${_post.title}</a>
+        </h2>
+       
+        <div class="post-metadata">
+            <span class="post-author">By ${_post.author.fullname}</span>
+            <span>on</span>
+            <span class="post-date">${_post.postedAt.format('MMM dd')}</span>
+            <span class="post-comments">
+                &nbsp;|&nbsp; 
+                ${_post.comments.size() ?: 'no'} 
+                comment${_post.comments.size().pluralize()}
+                #{if _post.comments}
+                    , latest by ${_post.comments[-1].author}
+                #{/if}
+            </span>
+        </div>
+         #{if _post.postImage.get()}
+         <div><img alt="Beauty" src="@{Beauty.getPostImage(_post.id)}"/></div>
+          #{/if}
+        <div class="post-content">
+            ${_post.content.nl2br()}
+        </div>
+         <div><a class="like" id="likemebt" href="javaScript:likebt(${_post.id})"; return false; >Like</a>
+            <span class="nooflikes" id="nooflikesbt">Total Likes : ${_post.likes}</span>
+        
+         </div>
+          #{if session.get("userid")}
+        #{if _post.author.id==session.get("userid").toLong() ||1==session.get("userid").toLong() }
+        <div class="deletepost"><a href="@{Beauty.deletePost(_post.id)}"><span>Delete Post</span></a></div>
+         #{/if}
+        #{/if}
+
+    </div>

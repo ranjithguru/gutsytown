@@ -1,0 +1,77 @@
+<script>
+function openForm(){
+	 document.getElementById("outerdivss").style.visibility= "visible";
+	 document.getElementById("outerdivss").style.display= "block";
+}
+function hideform(){
+	 document.getElementById("outerdivss").style.visibility= "hidden";
+	 document.getElementById("outerdivss").style.display= "none";
+}
+function validateNewForm()
+{
+var title=document.forms["newStoryFormss"]["title"].value;
+var content=document.forms["newStoryFormss"]["content"].value;
+
+
+if (title==null || title=="" ||!title.match (/\S/))
+  {
+  alert("Please Fill Title Field");
+  document.newStoryFormss.title.focus() ;
+  return false;
+  }
+
+if (content==null || content==""||!content.match (/\S/))
+{
+alert("Please Fill Content Field");
+document.newStoryFormss.content.focus() ;
+return false;
+}
+
+ return true;
+}
+
+function checkUser(){
+	 var xmlhttp;
+    if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+      }
+    else
+      {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    xmlhttp.onreadystatechange=function()
+      {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+   	   var resp=JSON.parse(xmlhttp.responseText);
+   	   if(resp.login)
+   		   {
+   		    openForm();
+   		   }
+   	   else{
+   		   alert("You Should Login to Write Posts");
+   	   }
+  
+           }
+         
+        }
+        var listAction = #{jsAction @LoginAndRegister.checkUserLogin() /}
+    xmlhttp.open("GET",listAction(),true);
+    xmlhttp.send();
+}
+</script>
+
+<div class="newpost">
+<a href="javaScript:checkUser()"><span>Write New Post</span></a>
+</div>
+
+<div id="outerdivss" class="formwrapper">
+ <form name="newStoryFormss" action="@{Sport.writeNew()}" method="POST" enctype="multipart/form-data" onsubmit="return validateNewForm()">  
+        <div>Title <br/><input class="ntitle" type="text" name="title" /></div><br/> <br/>
+        <div> Content <br/><textarea  name="content"> </textarea> </div><br/> 
+        <div>Upload Image (Optional Field) <input class ="uploadbutton" type="file" name="imageforpost" ></div><br/> 
+        <div> <input class="nsubmit" type="submit" value="Post It" /></div>
+         <div><input class="nsubmit" type="button" value="Cancel" onclick="javaScript:hideform()"/></div>
+         </form>
+</div>

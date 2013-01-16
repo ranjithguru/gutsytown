@@ -1,21 +1,21 @@
 #{extends 'main.html' /}
-#{set title:'Automobile' /}
-#{set description: 'cars,bikes,car race,tyres,bike race,train,bus ' /}
+#{set title:'Money' /}
+#{set description: 'Money,Tax,Savings,Buisness,loan,bombay stock exchange ' /}
 #{set 'moreScripts'}
   #{googleAnalytics /}
 #{/set}
-<div class="sectionheading">Automobile</div>
- #{Auto/writeNewAuto /}
+<div class="sectionheading">Money</div>
+ #{Money/writeNewMoney /}
  <hr class="horizontalline"/>
  #{if frontPost}
-    #{Auto/autoFrontPost post:frontPost /}
+    #{Money/moneyFrontPost post:frontPost /}
 <!--comment section -->
 <hr class="horizontalline"/>
-#{Auto/autoCommentsUI post:frontPost /}
+#{Money/moneyCommentsUI post:frontPost /}
  <hr class="horizontalline"/>
 <h3 class="simpleheadings">Post a comment</h3>
 
-#{form @Auto.postComment(frontPost.id)}
+#{form @Money.postComment(frontPost.id)}
 #{ifErrors}
         <p class="error">
              All fields are required! and the code you entered should also match
@@ -43,7 +43,7 @@
             #{list items:olderPosts, as:'oldPost'}
                 <div class="post">
                     <h2 class="post-title">
-                        <a href="@{Auto.auto(oldPost.id)}">${oldPost.title}</a>
+                        <a href="@{Money.money(oldPost.id)}">${oldPost.title}</a>
                         %{lastPost=oldPost}%
                     </h2>
                      #{oldPostUiWithoutTitle post:oldPost /}
@@ -58,7 +58,7 @@
      
           #{if lastPost.previous()}
          <div class="paginatebutton">
-         <a href="@{Auto.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
+         <a href="@{Money.nextOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Older Posts</span></a> 
          </div>
          #{/if}
          #{/if}
@@ -66,7 +66,7 @@
           #{if olderPosts}
      #{if olderPosts.first().next() && frontPost.id!=lastPost.id}
       <div class="paginatebutton">
-         <a href="@{Auto.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
+         <a href="@{Money.previousOldPosts(frontPost.id,lastPost.id)}"><span class="morePosts">Newer Posts</span></a> 
          </div>
          #{/if}
           #{/if}
@@ -81,5 +81,4 @@
        There is currently nothing to read here(user may have deleted this post in the current session just refresh the page and then try).
     </div>
 #{/else}
-
 
