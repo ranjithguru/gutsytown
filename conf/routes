@@ -8,6 +8,7 @@ GET     /gytsyWinner                               Application.gutsyGuyWinner
 
 GET     /indianConstitution                        IndianConstitution.indianConstitution
 
+GET     /Advertise                                  Advertise.advertise
 
 GET     /politics                                   Politics.politics
 GET     /nextOldPostsPolitics                       Politics.nextOldPosts
