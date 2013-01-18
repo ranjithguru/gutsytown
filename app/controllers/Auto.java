@@ -53,7 +53,8 @@ public class Auto extends Controller {
     	List<AutoPost> olderPosts = AutoPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Auto/auto.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Auto/auto.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -63,7 +64,8 @@ public class Auto extends Controller {
     	List<AutoPost> olderPosts = AutoPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Auto/auto.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Auto/auto.html",frontPost, olderPosts,randomID);
     	
     }
     

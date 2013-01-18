@@ -52,7 +52,8 @@ public class Tech extends Controller {
     	List<TechPost> olderPosts = TechPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Tech/tech.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Tech/tech.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -62,7 +63,8 @@ public class Tech extends Controller {
     	List<TechPost> olderPosts = TechPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Tech/tech.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Tech/tech.html",frontPost, olderPosts,randomID);
     	
     }
     

@@ -52,7 +52,8 @@ public class Money extends Controller {
     	List<MoneyPost> olderPosts = MoneyPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Money/money.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Money/money.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -62,7 +63,8 @@ public class Money extends Controller {
     	List<MoneyPost> olderPosts = MoneyPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Money/money.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Money/money.html",frontPost, olderPosts,randomID);
     	
     }
     

@@ -53,7 +53,8 @@ public class  MovieReview extends Controller {
     	List<MoviePost> olderPosts = MoviePost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/MovieReview/movieReview.html",frontPost, olderPosts);
+    	 String randomID = Codec.UUID();
+    	renderTemplate("app/views/MovieReview/movieReview.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -63,7 +64,8 @@ public class  MovieReview extends Controller {
     	List<MoviePost> olderPosts = MoviePost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/MovieReview/movieReview.html",frontPost, olderPosts);
+    	 String randomID = Codec.UUID();
+    	renderTemplate("app/views/MovieReview/movieReview.html",frontPost, olderPosts,randomID);
     	
     }
     

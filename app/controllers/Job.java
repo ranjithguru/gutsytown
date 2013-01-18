@@ -52,7 +52,8 @@ public class Job extends Controller{
     	List<JobPost> olderPosts = JobPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Job/job.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Job/job.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -62,7 +63,8 @@ public class Job extends Controller{
     	List<JobPost> olderPosts = JobPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Job/job.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Job/job.html",frontPost, olderPosts,randomID);
     	
     }
     

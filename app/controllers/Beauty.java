@@ -51,7 +51,8 @@ public class Beauty extends Controller{
     	List<BeautyPost> olderPosts = BeautyPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Beauty/beauty.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Beauty/beauty.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -61,7 +62,8 @@ public class Beauty extends Controller{
     	List<BeautyPost> olderPosts = BeautyPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Beauty/beauty.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Beauty/beauty.html",frontPost, olderPosts,randomID);
     	
     }
     

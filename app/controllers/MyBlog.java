@@ -53,7 +53,8 @@ public class MyBlog extends Controller {
     	List<BlogPost> olderPosts = BlogPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/MyBlog/myBlog.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/MyBlog/myBlog.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -63,7 +64,8 @@ public class MyBlog extends Controller {
     	List<BlogPost> olderPosts = BlogPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/MyBlog/myBlog.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/MyBlog/myBlog.html",frontPost, olderPosts,randomID);
     	
     }
     

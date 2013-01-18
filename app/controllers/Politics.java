@@ -1,6 +1,13 @@
 package controllers;
 
+import java.math.BigInteger;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.persistence.Query;
 
 import models.Comment;
 import models.Post;
@@ -13,6 +20,7 @@ import com.google.gson.JsonObject;
 import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.db.jpa.JPA;
 import play.libs.Codec;
 import play.mvc.Controller;
 
@@ -55,7 +63,8 @@ public class Politics extends Controller{
     	List<PoliticsPost> olderPosts = PoliticsPost.find(
                 "postedAt < ? order by postedAt desc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Politics/politics.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Politics/politics.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -65,7 +74,8 @@ public class Politics extends Controller{
     	List<PoliticsPost> olderPosts = PoliticsPost.find(
                 "postedAt > ? order by postedAt asc",lastPost.postedAt
             ).fetch(5);
-    	renderTemplate("app/views/Politics/politics.html",frontPost, olderPosts);
+    	String randomID = Codec.UUID();
+    	renderTemplate("app/views/Politics/politics.html",frontPost, olderPosts,randomID);
     	
     }
     
@@ -111,4 +121,5 @@ public class Politics extends Controller{
 	 List<PoliticsPost> recentPosts =PoliticsPost.find("order by postedAt desc").from(0).fetch(5);
 	 return recentPosts;
  }
+  
 }
