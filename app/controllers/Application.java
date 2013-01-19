@@ -23,7 +23,7 @@ public class Application extends Controller {
     	List<Post> yourStory=YourStory.getRecentFivePost();
     	List<MoviePost> movie=MovieReview.getRecentFivePost();
     	List<BlogPost> blog=MyBlog.getRecentFivePost();
-        render(politics,decision,travel,auto,yourStory,movie,blog);
+    	render(politics,decision,travel,auto,yourStory,movie,blog);
     }
     
   
@@ -36,141 +36,108 @@ public class Application extends Controller {
     	setTopThreeGutsyGuys();
     	setTopThreeGutsyGirls();
     	
-    	setRecentSadPosts();
-    	setRecentYouthPosts();
-    	setRecentCrushPosts();
-    	setRecentLovePosts();
-    	setRecentMovieReviews();
-    	setRecentMyBlogPosts();
-    	setRecentDecisionPosts();
+    	setPoliticsStar();
+    	setDecisionStar();
+    	setHealthStar();
+    	setFoodStar();
+    	setBeautyStar();
+    	setMoneyStar();
+    	setTechStar();
+    	setSportStar();
+    	setJobStar();
+    	setStoryStar();
+    	setMovieStar();
+    	setAutoStar();
+    	setTravelStar();
 		
 	}
 
-    private static void setRecentDecisionPosts() {
-		List<DecisionPost> recentPosts=Decision.getLatestPost();
-
-		DecisionPost post1=recentPosts.get(0);
-				if(post1!=null){
-					session.put("gd1",post1.title);
-					session.put("gd1id",post1.id);
-				}
-				DecisionPost post2=recentPosts.get(1);
-				if(post2!=null){
-				session.put("gd2",post2.title);
-				session.put("gd2id",post2.id);
-				}
-				
-		
-	}
-
-	private static void setRecentMyBlogPosts() {
-		List<BlogPost> recentPosts=MyBlog.getLatestPost();
-
-		BlogPost post1=recentPosts.get(0);
-				if(post1!=null){
-					session.put("my1",post1.title);
-					session.put("my1id",post1.id);
-				}
-				BlogPost post2=recentPosts.get(1);
-				if(post2!=null){
-				session.put("my2",post2.title);
-				session.put("my2id",post2.id);
-				}
-				
+    
+	private static void setJobStar() {
+		session.put("jstar",Job.getStarName());
+		session.put("jpost",Job.getStarTotalPosts());
 		
 	}
 
 
-
-	private static void setRecentMovieReviews() {
-		
-		List<MoviePost> recentPosts=MovieReview.getLatestPost();
-
-		MoviePost post1=recentPosts.get(0);
-				if(post1!=null){
-					session.put("mov1",post1.title);
-					session.put("mov1id",post1.id);
-				}
-				MoviePost post2=recentPosts.get(1);
-				if(post2!=null){
-				session.put("mov2",post2.title);
-				session.put("mov2id",post2.id);
-				}
-				
+	private static void setStoryStar() {
+		session.put("ysstar",YourStory.getStarName());
+		session.put("yspost",YourStory.getStarTotalPosts());
 		
 	}
 
 
-
-	private static void setRecentLovePosts() {
-		List<TravelPost> recentPosts=Travel.getLatestPost();
-
-		TravelPost post1=recentPosts.get(0);
-				if(post1!=null){
-					session.put("love1",post1.title);
-					session.put("love1id",post1.id);
-				}
-				TravelPost post2=recentPosts.get(1);
-				if(post2!=null){
-				session.put("love2",post2.title);
-				session.put("love2id",post2.id);
-				}
-				
+	private static void setMovieStar() {
+		session.put("mrstar",MovieReview.getStarName());
+		session.put("mrpost",MovieReview.getStarTotalPosts());
 		
 	}
 
 
-
-	private static void setRecentCrushPosts() {
-		List<AutoPost> recentPosts=Auto.getLatestPost();
-
-		AutoPost post1=recentPosts.get(0);
-				if(post1!=null){
-					session.put("crush1",post1.title);
-					session.put("crush1id",post1.id);
-				}
-				AutoPost post2=recentPosts.get(1);
-				if(post2!=null){
-				session.put("crush2",post2.title);
-				session.put("crush2id",post2.id);
-				}
-				
-	}
-
-
-
-	private static void setRecentYouthPosts() {
-List<PoliticsPost> recentPosts=Politics.getLatestPost();
-
-  PoliticsPost post1=recentPosts.get(0);
-		if(post1!=null){
-			session.put("youth1",post1.title);
-			session.put("youth1id",post1.id);
-		}
-		PoliticsPost post2=recentPosts.get(1);
-		if(post2!=null){
-		session.put("youth2",post2.title);
-		session.put("youth2id",post2.id);
-		}
+	private static void setTravelStar() {
+		session.put("ytstar",Travel.getStarName());
+		session.put("ytpost",Travel.getStarTotalPosts());
 		
 	}
 
 
+	private static void setSportStar() {
+		session.put("sstar",Sport.getStarName());
+		session.put("spost",Sport.getStarTotalPosts());
+		
+	}
 
-	private static void setRecentSadPosts() {
-		List<Post> recentPosts=YourStory.getLatestPost();
+
+	private static void setTechStar() {
+		session.put("tstar",Tech.getStarName());
+		session.put("tpost",Tech.getStarTotalPosts());
 		
-		Post post1=recentPosts.get(0);
-		if(post1!=null){
-			session.put("sad1",post1.title);
-			session.put("sad1id",post1.id);
-		}
-		Post post2=recentPosts.get(1);
-		if(post2!=null){
-		session.put("sad2",post2.title);
-		session.put("sad2id",post2.id);
-		}
+	}
+
+
+	private static void setMoneyStar() {
+		session.put("mstar",Money.getStarName());
+		session.put("mpost",Money.getStarTotalPosts());
 		
+	}
+
+
+	private static void setBeautyStar() {
+		session.put("bstar",Beauty.getStarName());
+		session.put("bpost",Beauty.getStarTotalPosts());
+		
+	}
+
+
+	private static void setFoodStar() {
+		session.put("fstar",Food.getStarName());
+		session.put("fpost",Food.getStarTotalPosts());
+		
+	}
+
+
+	private static void setHealthStar() {
+		session.put("hstar",Health.getStarName());
+		session.put("hpost",Health.getStarTotalPosts());
+		
+	}
+
+
+	private static void setDecisionStar() {
+		session.put("dstar",Decision.getStarName());
+		session.put("dpost",Decision.getStarTotalPosts());
+		
+	}
+
+
+	private static void setAutoStar() {
+		session.put("astar",Auto.getStarName());
+		session.put("apost",Auto.getStarTotalPosts());
+		
+	}
+	private static void setPoliticsStar() {
+			session.put("pstar",Politics.getStarName());
+			session.put("ppost",Politics.getStarTotalPosts());
 	}
 
 

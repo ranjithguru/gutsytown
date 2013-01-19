@@ -1,6 +1,9 @@
 package controllers;
 
+import java.math.BigInteger;
 import java.util.List;
+
+import javax.persistence.Query;
 
 import models.SportComment;
 import models.SportPost;
@@ -8,6 +11,7 @@ import models.User;
 import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.db.jpa.JPA;
 import play.libs.Codec;
 import play.mvc.Controller;
 
@@ -101,13 +105,31 @@ public class Sport extends Controller{
     	 renderJSON(jsObject.toString());
     }
     
- public static List<SportPost> getLatestPost(){
-	 List<SportPost> recentPosts =SportPost.find("order by postedAt desc").from(0).fetch(2);
-	 return recentPosts;
- }
  
  public static List<SportPost> getRecentFivePost(){
 	 List<SportPost> recentPosts =SportPost.find("order by postedAt desc").from(0).fetch(5);
 	 return recentPosts;
  }
+ public static String getStarName(){
+		String sql= "SELECT id FROM User WHERE id IN ("+
+				 "SELECT author_id FROM sportpost GROUP BY author_id"+
+				 " HAVING COUNT(*) = (SELECT MAX(noofpost) from (SELECT COUNT(author_id) AS noofpost FROM sportpost GROUP BY author_id HAVING author_id!=1) AS ma)"+
+				 "AND author_id != 1) ORDER BY points desc LIMIT 1 ";
+		
+		 Query query = JPA.em().createNativeQuery(sql);
+		List<BigInteger> userIdList =query.getResultList();
+		BigInteger bigIntegerUserId=userIdList.get(0);
+		Long longuserId=(long) bigIntegerUserId.intValue();
+		User star= User.findById(longuserId);
+		return star.fullname;
+	 }
+	 public static String getStarTotalPosts(){
+		 String sql="SELECT MAX(noofpost) from (SELECT COUNT(author_id) AS noofpost FROM sportpost GROUP BY author_id HAVING author_id!=1) AS ma";
+		 Query query = JPA.em().createNativeQuery(sql);
+		 List<BigInteger> result =query.getResultList();
+		 BigInteger bigIntegerUserId=result.get(0);
+		 String totalStarPosts=bigIntegerUserId.toString();
+		 return totalStarPosts;
+
+	 }
 }

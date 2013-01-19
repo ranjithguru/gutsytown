@@ -1,53 +1,80 @@
- <style>
-.recentpostholder marquee{
-color:#00A2E8;
-text-decoration: underline;
-}
-
- </style>
  
  <div id="leftcolumn">
-             <div class="recentpost">Recent Posts</div> 
-             <div class='headings'><span>Criticize Politics</span></div>
+             <div class="recentpost">Stars of GutsyTown</div> 
+             
+             <div class='headings'><span>Politics Star</span></div>
              <div class="recentpostholder">
-             <div><a href="@{YouthRevolution.youthRevolution(session.youth1id)}"><marquee scrollamount="2">${session.youth1}</marquee></a></div>
-              <div> <a href="@{YouthRevolution.youthRevolution(session.youth2id)}"><marquee scrollamount="2">${session.youth2}</marquee></a></div>
-               </div>
-             <div class='headings'>Gutsy Decision</div>
+             <div>${session.pstar}</div>
+              <div>Politics Posts:${session.ppost}</div>
+              </div>
+              
+             <div class='headings'>Decision Star</div>
               <div class="recentpostholder">
-             <div><a href="@{Decision.decision(session.gd1id)}"><marquee scrollamount="2">${session.gd1}</marquee></a></div>
-              <div> <a href="@{Decision.decision(session.gd2id)}"><marquee scrollamount="2">${session.gd2}</marquee></a></div>
+             <div>${session.dstar}</div>
+              <div>Decision Posts:${session.dpost}</div>
                </div>
-              <div class='headings'>Your Sad Story</div>
+               
+              <div class='headings'>Health Star</div>
                <div class="recentpostholder">
-             <div><a href="@{SadStory.sadStory(session.sad1id)}"><marquee scrollamount="2">${session.sad1}</marquee></a></div>
-              <div> <a href="@{SadStory.sadStory(session.sad2id)}"><marquee scrollamount="2">${session.sad2}</marquee></a></div>
+             <div>${session.hstar}</div>
+              <div>Health Posts:${session.hpost}</div>
                </div>
              
-               <div class='headings'>Your First Crush </div>
-                <div class="recentpostholder">
-             <div><a href="@{FirstCrush.firstCrush(session.crush1id)}"><marquee scrollamount="2">${session.crush1}</marquee></a></div>
-              <div> <a href="@{FirstCrush.firstCrush(session.crush2id)}"><marquee scrollamount="2">${session.crush2}</marquee></a></div>
+               <div class='headings'>Food Star</div>
+               <div class="recentpostholder">
+            <div>${session.fstar}</div>
+              <div>Food Posts:${session.fpost}</div>
                </div>
-             <div class='headings'>Your Love Story</div>
+               
+             <div class='headings'>Beauty Star</div>
               <div class="recentpostholder">
-             <div><a href="@{LoveStory.loveStory(session.love1id)}"><marquee scrollamount="2">${session.love1}</marquee></a></div>
-              <div> <a href="@{LoveStory.loveStory(session.love2id)}"><marquee scrollamount="2">${session.love2}</marquee></a></div>
-               </div>
-             <div class='headings'>Review Movies</div>
+             <div>${session.bstar}</div>
+              <div>Beauty Posts:${session.bpost}</div>
+              </div>
+             <div class='headings'>Money Star</div>
               <div class="recentpostholder">
-             <div><a href="@{MovieReview.movieReview(session.mov1id)}"><marquee scrollamount="2">${session.mov1}</marquee></a></div>
-              <div> <a href="@{MovieReview.movieReview(session.mov2id)}"><marquee scrollamount="2">${session.mov2}</marquee></a></div>
+            <div>${session.mstar}</div>
+              <div>Money Posts:${session.mpost}</div>
                </div>
-             <div class='headings'>My Blog</div>
+             <div class='headings'>Tech Star</div>
               <div class="recentpostholder">
-             <div><a href="@{MyBlog.myBlog(session.my1id)}"><marquee scrollamount="2">${session.my1}</marquee></a></div>
-              <div> <a href="@{MyBlog.myBlog(session.my2id)}"><marquee scrollamount="2">${session.my2}</marquee></a></div>
+            <div>${session.tstar}</div>
+              <div>Tech Posts:${session.tpost}</div>
                </div>
-       <div class='headings'>Gutsy Polls</div>
+             <div class='headings'>Sports Star</div>
               <div class="recentpostholder">
-             <div><a href='#'><marquee scrollamount="2">test first post</marquee></a></div>
-              <div> <a href='#'><marquee scrollamount="2">test second post</marquee></a></div>
+              <div>${session.sstar}</div>
+              <div>Sports Posts:${session.spost}</div>
                </div>
-
+               <div class='headings'>Job Star</div>
+              <div class="recentpostholder">
+             <div>${session.jstar}</div>
+              <div>Job Posts:${session.jpost}</div>
+               </div>
+               
+               <div class='headings'>Story Star</div>
+              <div class="recentpostholder">
+             <div>${session.ysstar}</div>
+              <div>Story Posts:${session.yspost}</div>
+               </div>
+               
+               <div class='headings'>Movie Star</div>
+              <div class="recentpostholder">
+             <div>${session.mrstar}</div>
+              <div>Movie Posts:${session.mrpost}</div>
+               </div>
+               
+              <div class='headings'>Auto Star</div>
+              <div class="recentpostholder">
+              <div>${session.astar}</div>
+              <div>Auto Posts:${session.apost}</div>
+              </div>
+               
+               <div class='headings'>Travel Star</div>
+              <div class="recentpostholder">
+             <div>${session.ytstar}</div>
+              <div>Travel Posts:${session.ytpost}</div>
+               </div>
+               
+     
        </div>

@@ -89,14 +89,14 @@ width: 100%;
 }
 
 #contentcolumn{
-margin-left:16%; /*Margins for content column. Should be "0 right-column-width 0 left-column-width*/
+margin-left:170px; /*Margins for content column. Should be "0 right-column-width 0 left-column-width*/
 width:60%;
 float:left;
 }
 
 #leftcolumn{
 float: left;
-width: 15%; /*Width of left column in percentage*/
+width: 140px; /*Width of left column in percentage*/
 margin-left: -100%;
 border:5px solid #00A2E8;
 }
@@ -128,30 +128,34 @@ padding: 4px 0px;
 	width:100%;
 	float:left;
 	color:#00A2E8;
-	padding:4px 0px 4px 4px;
+	padding:1px 1px 1px 1px;
 	text-align: center;
 	
 }
 
 .recentpostholder{
 	float:left;
-	height: 50px;
-	font-family:cursive;
+	height: 45px;
+	font-family:monospace;
 	display:block;
-	width:90%;
+	width:100%;
+	font-size:12px;
+	font-weight:bolder;
+	text-align:center;
 	background:white;
-	padding:10px 10px 10px 10px;
+	color:#F535AA;
+	padding:1px 1px 1px 1px;
 }
 
 .recentpost{
 	font-family:cursive;
 	background:#00A2E8;
-	height: 30px;
+	height: 45px;
 	display:block;
 	color:white;
 	float:left;
 	width:100%;
-	font-size:20px;
+	font-size:15px;
 	font-weight:bold;
 	text-align: center;
 }
