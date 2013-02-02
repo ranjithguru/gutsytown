@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
-#{set title:'Indian Constitution Basics|Criticize Politics|Gutsy Decision|Love Story|First Crush|Sad Story|Review Movies|My Blog|Contact Me' /}
-#{set description: 'GutsyTown is a social utility where users can post their first crush,love stories ,sad stories.Users can also find the basics of Indian constitution.Users can review movies ,Criticize Politics,You can post your decisions on the given scenario assuming that you are the authority for the given scenario.Users can participate in Gutsy polls.Users will be awarded ranks based on their activities'/}
+#{set title:'Politics|Decision|your Story|Movies|sports|health|food|beauty|money|tech|job|auto|travel' /}
+#{set description: 'GutsyTown is a social utility where users can participate and share their articles on different topics listed in gutsytown.active members will be considered as stars'/}
 #{set 'moreScripts'}
  #{googleAnalytics /}
 #{/set}
@@ -15,153 +15,344 @@
 	padding-right: 20px;
 }
 .headingbutton{
- width:100%;
-color:black;
-font-family:cursive;
 font-weight:bold;
 font-size:14px;
-text-align:center;
-background:repeat-x center #00A2E8;
-background-color:red;
-border:1px solid black;
-border-bottom:1px solid black;
-cursor:pointer;
+font-family:cursive;
+background:transparent url(public/stylesheets/images/menu.png) repeat-x top left;
+width:100%;
+float:left;
+color:#00A2E8;
+padding:1px 1px 1px 1px;
+text-align: center;
 }
+
 .box{
-width:150px;
-height: 220px;
+width:200px;
+height: 250px;
 border:3px solid #00A2E8;
 display: block;
 overflow: hidden;
 float: left;
 margin: 10px;
+text-align: center;
 }
-.recent{
-font-size: 12px;
-font-family:cursive;
-font-weight:bolder;
-color: black;
-padding-left: 20px;
-
+.box a:hover{
+text-decoration: underline;
 }
 .posttitle{
-font-size: 12px;
-font-weight: normal;
-font-family:monospace;
+font-size: 13px;
+font-weight:normal;
+font-family:arial;
 float: left;
+color:#0066CC;
 padding-left:5px;
-color:black;
+text-align: center;
+width:180px;
+word-wrap: break-word;
+overflow: hidden;
+margin-bottom: 25px;
+text-decoration: none;
 }
 .indexcontainer{
 padding: 20px;
 float: left;
 width: 800px;
-
 }
-.indiancontainer{
-padding-left:280px;
-float: left;
-width: 800px;
-
-}
-.constitutionbox{
-width:150px;
-height: 50px;
-border:3px solid #00A2E8;
-display: block;
+.marqueecontainer{
+position: relative;
+width: 190px; /*marquee width */
+height: 240px; /*marquee height */
+background-color: white;
 overflow: hidden;
-float: left;
-margin: 5px;
-clear: both;
-padding: 3px;
-background:repeat-x center black;
+padding: 2px;
+padding-left: 4px;
+text-align: center;
+}
+.smallimage{
+height:80px;
+width:150px;
 }
 </style>
+<script type="text/javascript">
+var marqueespeed=2;
+var pausespeed=0;
+var delaybeforestart=1000;
+function box(marc,vm){
+	
+	this.marqueecontainer=marc;
+	this.verticalmarquee=vm;
+	this.copyspeed=marqueespeed;
+	this.cross_marquee=document.getElementById(this.verticalmarquee);
+	this.marqueeheight=document.getElementById(this.marqueecontainer).offsetHeight;
+	this.actualheight=this.cross_marquee.offsetHeight;
+	var that = this;
 
-<div><img alt="gutsytown" src="public/images/indexdisplay.jpg" class="handPunch"> </div>
-<div class="indiancontainer">
-<div class="constitutionbox">
-    <a href="@{IndianConstitution.indianConstitution()}"><h1 class="headingbutton">Indian Constitution</h1></a>
-    </div>
-    </div>
+this.inits=function(){
+this.cross_marquee.style.top=0
+if (window.opera || navigator.userAgent.indexOf("Netscape/7")!=-1){ //if Opera or Netscape 7x, add scrollbars to scroll and exit
+this.cross_marquee.style.height=marqueeheight+"px"
+this.cross_marquee.style.overflow="scroll"
+return
+}
+setTimeout(this.scrollmarquee,delaybeforestart)
+}
+
+this.scrollmarquee=function(){
+	return setInterval(function(){
+		if (parseInt(that.cross_marquee.style.top)>(that.actualheight*(-1)+8))
+			that.cross_marquee.style.top=parseInt(that.cross_marquee.style.top)-that.copyspeed+"px"
+		else 
+			that.cross_marquee.style.top=parseInt(that.marqueeheight)+8+'px'
+		},30)
+}
+}
+
+function initializeallmarquee(){
+politicsbox=new box('politicscontainer','politicsvmarquee');
+politicsbox.inits();
+decisionbox=new box('decisioncontainer','decisionvmarquee');
+decisionbox.inits();
+healthbox=new box('healthcontainer','healthvmarquee');
+healthbox.inits();
+foodbox=new box('foodcontainer','foodvmarquee');
+foodbox.inits();
+beautybox=new box('beautycontainer','beautyvmarquee');
+beautybox.inits();
+moneybox=new box('moneycontainer','moneyvmarquee');
+moneybox.inits();
+techbox=new box('techcontainer','techvmarquee');
+techbox.inits();
+sportbox=new box('sportcontainer','sportvmarquee');
+sportbox.inits();
+jobbox=new box('jobcontainer','jobvmarquee');
+jobbox.inits();
+storybox=new box('storycontainer','storyvmarquee');
+storybox.inits();
+moviebox=new box('moviecontainer','movievmarquee');
+moviebox.inits();
+autobox=new box('autocontainer','autovmarquee');
+autobox.inits();
+travelbox=new box('travelcontainer','travelvmarquee');
+travelbox.inits();
+blogbox=new box('blogcontainer','blogvmarquee');
+blogbox.inits();
+
+}
+if (window.addEventListener)
+window.addEventListener("load", initializeallmarquee, false)
+else if (window.attachEvent)
+window.attachEvent("onload", initializeallmarquee)
+else if (document.getElementById)
+window.onload=initializeallmarquee
+</script>
+<div>
+#{contentSlider gld:glide /}
+ </div>
+
 <div class="indexcontainer">
     <div class="box">
     <a href="@{Politics.politics()}"><h1 class="headingbutton">Politics</h1></a>
-     <span class="recent">Recent 5 Posts</span>
+     <div id="politicscontainer" class="marqueecontainer" onMouseover="politicsbox.copyspeed=pausespeed" onMouseout="politicsbox.copyspeed=marqueespeed">
+     <div id="politicsvmarquee" style="position: absolute; width: 98%;">	
      #{if politics}
             #{list items:politics, as:'post'}
-                   <br /><marquee scrollamount="2"><a href="@{Politics.politics(post.id)}" class="posttitle">${post.title}</a></marquee>
+                   <div><img class="smallimage" alt="${post.title}" src="@{Politics.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Politics.politics(post.id)}" class="posttitle">${post.title}</a>
             #{/list}
     #{/if}
+    </div>
+    </div>
     </div>
     
      <div class="box">
-   <a href="@{Decision.decision()}"><h1 class="headingbutton">Gutsy Decision</h1></a>
-   <span class="recent">Recent 5 Posts</span>
+    <a href="@{Decision.decision()}"><h1 class="headingbutton">Gutsy Decision</h1></a>
+    <div id="decisioncontainer" class="marqueecontainer" onMouseover="decisionbox.copyspeed=pausespeed" onMouseout="decisionbox.copyspeed=marqueespeed">
+     <div id="decisionvmarquee" style="position: absolute; width: 98%;">
     #{if decision}
             #{list items:decision, as:'post'}
-                       <br /> <marquee scrollamount="2"><a href="@{Decision.decision(post.id)}" class="posttitle">${post.title}</a></marquee>
+                       <div><img class="smallimage" alt="${post.title}" src="@{Decision.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Decision.decision(post.id)}" class="posttitle">${post.title}</a>
             #{/list}
     #{/if}
     </div>
+    </div>
+    </div>
+    
+    
+    <div class="box">
+    <a href="@{Health.health()}"><h1 class="headingbutton">Health Tips</h1></a>
+    <div id="healthcontainer" class="marqueecontainer" onMouseover="healthbox.copyspeed=pausespeed" onMouseout="healthbox.copyspeed=marqueespeed">
+     <div id="healthvmarquee" style="position: absolute; width: 98%;">
+    #{if health}
+            #{list items:health, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Health.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Health.health(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+    
+    <div class="box">
+    <a href="@{Food.food()}"><h1 class="headingbutton">Indian Food</h1></a>
+    <div id="foodcontainer" class="marqueecontainer" onMouseover="foodbox.copyspeed=pausespeed" onMouseout="foodbox.copyspeed=marqueespeed">
+     <div id="foodvmarquee" style="position: absolute; width: 98%;">
+    #{if food}
+            #{list items:food, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Food.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Food.food(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+    
+    
+     <div class="box">
+    <a href="@{Beauty.beauty()}"><h1 class="headingbutton">Beauty Tips</h1></a>
+    <div id="beautycontainer" class="marqueecontainer" onMouseover="beautybox.copyspeed=pausespeed" onMouseout="beautybox.copyspeed=marqueespeed">
+     <div id="beautyvmarquee" style="position: absolute; width: 98%;">
+    #{if beauty}
+            #{list items:beauty, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Beauty.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Beauty.beauty(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+    
+    
+    <div class="box">
+    <a href="@{Money.money()}"><h1 class="headingbutton">Money</h1></a>
+    <div id="moneycontainer" class="marqueecontainer" onMouseover="moneybox.copyspeed=pausespeed" onMouseout="moneybox.copyspeed=marqueespeed">
+     <div id="moneyvmarquee" style="position: absolute; width: 98%;">
+    #{if money}
+            #{list items:money, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Money.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Money.money(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+    
+     <div class="box">
+    <a href="@{Tech.tech()}"><h1 class="headingbutton">Technology</h1></a>
+    <div id="techcontainer" class="marqueecontainer" onMouseover="techbox.copyspeed=pausespeed" onMouseout="techbox.copyspeed=marqueespeed">
+     <div id="techvmarquee" style="position: absolute; width: 98%;">
+    #{if tech}
+            #{list items:tech, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Tech.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Tech.tech(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+     <div class="box">
+    <a href="@{Sport.sport()}"><h1 class="headingbutton">Sports</h1></a>
+    <div id="sportcontainer" class="marqueecontainer" onMouseover="sportbox.copyspeed=pausespeed" onMouseout="sportbox.copyspeed=marqueespeed">
+     <div id="sportvmarquee" style="position: absolute; width: 98%;">
+    #{if sport}
+            #{list items:sport, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Sport.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Sport.sport(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+    
+     <div class="box">
+    <a href="@{Job.job()}"><h1 class="headingbutton">Jobs</h1></a>
+    <div id="jobcontainer" class="marqueecontainer" onMouseover="jobbox.copyspeed=pausespeed" onMouseout="jobbox.copyspeed=marqueespeed">
+     <div id="jobvmarquee" style="position: absolute; width: 98%;">
+    #{if job}
+            #{list items:job, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Job.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Job.job(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+    
     
      <div class="box">
     <a href="@{YourStory.yourStory()}"><h1 class="headingbutton">Your Story</h1></a>
-   <span class="recent">Recent 5 Posts</span>
-     #{if yourStory}
+    <div id="storycontainer" class="marqueecontainer" onMouseover="storybox.copyspeed=pausespeed" onMouseout="storybox.copyspeed=marqueespeed">
+     <div id="storyvmarquee" style="position: absolute; width: 98%;">
+    #{if yourStory}
             #{list items:yourStory, as:'post'}
-                    
-                      <br /><marquee scrollamount="2"> <a href="@{YourStory.yourStory(post.id)}" class="posttitle">${post.title}</a></marquee>
-                    
+                       <div><img class="smallimage" alt="${post.title}" src="@{YourStory.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{YourStory.yourStory(post.id)}" class="posttitle">${post.title}</a>
             #{/list}
     #{/if}
     </div>
-   
-     <div class="box">
-   <a href="@{Auto.auto()}"><h1 class="headingbutton">Automobile</h1></a>
-   <span class="recent">Recent 5 Posts</span>
-    #{if auto}
-            #{list items:auto, as:'post'}  
-                     <br /><marquee scrollamount="2"> <a href="@{Auto.auto(post.id)}" class="posttitle">${post.title}</a></marquee>
-            #{/list}
-    #{/if}
+    </div>
     </div>
     
      <div class="box">
-   <a href="@{LoveStory.loveStory()}"><h1 class="headingbutton">Your Travel</h1></a>
-   <span class="recent">Recent 5 Posts</span>
-    #{if travel}
-            #{list items:travel, as:'post'}
-                    
-                       <br /><marquee scrollamount="2"><a href="@{Travel.travel(post.id)}" class="posttitle">${post.title}</a></marquee>
-                    
-            #{/list}
-    #{/if}
-    </div>
-   
-     <div class="box">
-   <a href="@{MovieReview.movieReview()}"><h1 class="headingbutton">Movies</h1></a>
-   <span class="recent">Recent 5 Posts</span>
+    <a href="@{MovieReview.movieReview()}"><h1 class="headingbutton">Movies</h1></a>
+    <div id="moviecontainer" class="marqueecontainer" onMouseover="moviebox.copyspeed=pausespeed" onMouseout="moviebox.copyspeed=marqueespeed">
+     <div id="movievmarquee" style="position: absolute; width: 98%;">
     #{if movie}
             #{list items:movie, as:'post'}
-                      <br /><marquee scrollamount="2">  <a href="@{MovieReview.movieReview(post.id)}" class="posttitle">${post.title}</a></marquee>
+                       <div><img class="smallimage" alt="${post.title}" src="@{MovieReview.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{MovieReview.movieReview(post.id)}" class="posttitle">${post.title}</a>
             #{/list}
     #{/if}
     </div>
-   
-     <div class="box">
-   <a href="@{MyBlog.myBlog()}"><h1 class="headingbutton">My Blog</h1></a>
-   <span class="recent">Recent 5 Posts</span>
-    #{if blog}
-            #{list items:blog, as:'post'}
-                      <br /> <marquee scrollamount="2"><a href="@{MyBlog.myBlog(post.id)}" class="posttitle">${post.title}</a></marquee>
-                    
-            #{/list}
-    #{/if}
+    </div>
     </div>
     
      <div class="box">
+    <a href="@{Auto.auto()}"><h1 class="headingbutton">Automobile</h1></a>
+    <div id="autocontainer" class="marqueecontainer" onMouseover="autobox.copyspeed=pausespeed" onMouseout="autobox.copyspeed=marqueespeed">
+     <div id="autovmarquee" style="position: absolute; width: 98%;">
+    #{if auto}
+            #{list items:auto, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Auto.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Auto.auto(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+    
+    
+     <div class="box">
+    <a href="@{Travel.travel()}"><h1 class="headingbutton">Your Travel</h1></a>
+    <div id="travelcontainer" class="marqueecontainer" onMouseover="travelbox.copyspeed=pausespeed" onMouseout="travelbox.copyspeed=marqueespeed">
+     <div id="travelvmarquee" style="position: absolute; width: 98%;">
+    #{if travel}
+            #{list items:travel, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{Travel.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{Travel.travel(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
+ 
+     <div class="box">
    <a href="@{GutsyPolls.gutsyPolls()}"><h1 class="headingbutton">Gutsy Polls</h1></a>  
-   <span class="recent">This Feature Will Be Available Soon</span> 
+   this feature will be available soon
    </div>
+   
+   
+    <div class="box">
+    <a href="@{Myblog.myBlog()}"><h1 class="headingbutton">My Blog</h1></a>
+    <div id="blogcontainer" class="marqueecontainer" onMouseover="blogbox.copyspeed=pausespeed" onMouseout="blogbox.copyspeed=marqueespeed">
+     <div id="blogvmarquee" style="position: absolute; width: 98%;">
+    #{if blog}
+            #{list items:blog, as:'post'}
+                       <div><img class="smallimage" alt="${post.title}" src="@{MyBlog.getPostImage(post.id)}" onError="this.onerror=null;this.src='/public/images/background.png'"/></div>
+                   <a href="@{MyBlog.myBlog(post.id)}" class="posttitle">${post.title}</a>
+            #{/list}
+    #{/if}
+    </div>
+    </div>
+    </div>
    </div>

@@ -1,0 +1,226 @@
+
+<script src="@{'/public/javascripts/featuredcontentglider.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script>
+featuredcontentglider.init({
+	gliderid: "recentpostglider", //ID of main glider container
+	contentclass: "glidecontent", //Shared CSS class name of each glider content
+	togglerid: "pageselect", //ID of toggler container
+	remotecontent: "", //Get gliding contents from external file on server? "filename" or "" to disable
+	selected: 0, //Default selected content index (0=1st)
+	persiststate: false, //Remember last content shown within browser session (true/false)?
+	speed: 1000, //Glide animation duration (in milliseconds)
+	direction: "rightleft", //set direction of glide: "updown", "downup", "leftright", or "rightleft"
+	autorotate: true, //Auto rotate contents (true/false)?
+	autorotateconfig: [3000, 5], //if auto rotate enabled, set [milliseconds_btw_rotations, cycles_before_stopping]
+	onChange: function(previndex, curindex, $allcontents){ // fires when Glider changes slides
+  		//custom code here
+	}
+})
+
+</script>
+<style>
+.gliderbox{
+margin-top:50px;
+padding:3px;
+float: left;
+width: 600px;
+background-color:#00A2E8; 
+margin-left: 40px;
+}
+.titledisplay{
+float: left;
+padding-left:5px;
+text-align:left;
+width:100%;
+overflow: hidden;
+word-wrap: break-word;
+height:50px;
+background:transparent url(public/stylesheets/images/menu.png);
+filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+.psttitle{
+font-size: 15px;
+font-weight:normal;
+font-family:cursive;
+float: left;
+color:#00A2E8;
+padding-left:5px;
+text-align:left;
+word-wrap: break-word;
+overflow: hidden;
+text-decoration: none;
+z-index: 9999;
+}
+.titledisplay a:hover{
+text-decoration:underline;
+color: white;
+}
+.glidecontentwrapper{
+position: relative; /* Do not change this value 600px*/
+width: 100%;
+height: 300px; /* Set height to be able to contain height of largest content shown*/
+overflow: hidden;
+float:left;
+}
+/*
+	Total wrapper width: 350px+5px+5px=360px
+	Or width of wrapper div itself plus any left and right CSS border and padding
+	Adjust related containers below according to comments
+*/
+
+
+.glidecontent{ /*style for each glide content DIV within wrapper.*/
+position: absolute; /* Do not change this value padding: 10px;width: 580px; */
+background: white;
+visibility: hidden;
+width:100%;
+}
+/*
+ Total glidecontent width: 330px+10px+10px=350px
+	Or width of wrapper div itself (not counting wrapper border/padding)
+*/
+
+.glidecontenttoggler{ /*style for DIV used to contain toggler links. */
+width: 580px;
+padding:5px;
+margin-top:10px;
+text-align: center; /*How to align pagination links: "left", "center", or "right"
+background: white; /*always declare an explicit background color for fade effect to properly render in IE*/
+}
+/*
+ Total contenttoggler width: 350px+5px+5px=360px
+	Or total width of wrapper div (counting wrapper border/padding)
+*/
+
+.glidecontenttoggler a{ /*style for every navigational link within toggler */
+display: inline-block;
+color: black;
+padding: 1px 3px;
+margin-right: 3px;
+font-weight: bold;
+text-decoration: none;
+}
+
+.glidecontenttoggler a.selected{ /*style for selected page's toggler link. ".selected" class auto generated! */
+background: #E4EFFA;
+color: black;
+}
+
+.glidecontenttoggler a:hover{
+background: #E4EFFA;
+color: black;
+}
+
+.glidecontenttoggler a.toc{ /*style for individual toggler links (page 1, page 2, etc). ".toc" class auto generated! */
+}
+
+.glidecontenttoggler a.prev, .glidecontenttoggler a.next{ /*style for "prev" and "next" toggler links. ".prev" and ".next" classes auto generated! */
+}
+
+.glidecontenttoggler a.prev:hover, .glidecontenttoggler a.next:hover{
+background: #1A48A4;
+color: white;
+}
+.displayimage{
+width:100%;
+float:left;
+height:100%;
+}
+</style> 
+<div class="gliderbox">
+<div id="recentpostglider" class="glidecontentwrapper">
+<!-- politics -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Politics.politics(_gld.get('po').id)}" class="psttitle">${_gld.get('po').title}</a><br /></div>
+<img src="@{Politics.getPostImage(_gld.get('po').id)}" alt="${_gld.get('po').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- decision -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Decision.decision(_gld.get('de').id)}" class="psttitle">${_gld.get('de').title}</a><br /></div>
+<img src="@{Decision.getPostImage(_gld.get('de').id)}" alt="${_gld.get('de').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- health -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Health.health(_gld.get('he').id)}" class="psttitle">${_gld.get('he').title}</a><br /></div>
+<img src="@{Health.getPostImage(_gld.get('he').id)}" alt="${_gld.get('he').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- food -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Food.food(_gld.get('fo').id)}" class="psttitle">${_gld.get('fo').title}</a><br /></div>
+<img src="@{Food.getPostImage(_gld.get('fo').id)}" alt="${_gld.get('fo').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- beauty -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Beauty.beauty(_gld.get('be').id)}" class="psttitle">${_gld.get('be').title}</a><br /></div>
+<img src="@{Beauty.getPostImage(_gld.get('be').id)}" alt="${_gld.get('be').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- money -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Money.money(_gld.get('mo').id)}" class="psttitle">${_gld.get('mo').title}</a><br /></div>
+<img src="@{Money.getPostImage(_gld.get('mo').id)}" alt="${_gld.get('mo').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- tech -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Tech.tech(_gld.get('te').id)}" class="psttitle">${_gld.get('te').title}</a><br /></div>
+<img src="@{Tech.getPostImage(_gld.get('te').id)}" alt="${_gld.get('te').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- sports -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Sport.sport(_gld.get('sp').id)}" class="psttitle">${_gld.get('sp').title}</a><br /></div>
+<img src="@{Sport.getPostImage(_gld.get('sp').id)}" alt="${_gld.get('sp').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- job -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Job.job(_gld.get('jo').id)}" class="psttitle">${_gld.get('jo').title}</a><br /></div>
+<img src="@{Job.getPostImage(_gld.get('jo').id)}" alt="${_gld.get('jo').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- story -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{YourStory.yourStory(_gld.get('yo').id)}" class="psttitle">${_gld.get('yo').title}</a><br /></div>
+<img src="@{YourStory.getPostImage(_gld.get('yo').id)}" alt="${_gld.get('yo').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- movie -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{MovieReview.movieReview(_gld.get('mr').id)}" class="psttitle">${_gld.get('mr').title}</a><br /></div>
+<img src="@{MovieReview.getPostImage(_gld.get('mr').id)}" alt="${_gld.get('mr').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+<!-- auto -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Auto.auto(_gld.get('au').id)}" class="psttitle">${_gld.get('au').title}</a><br /></div>
+<img src="@{Auto.getPostImage(_gld.get('au').id)}" alt="${_gld.get('au').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+
+<!-- travel -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{Travel.travel(_gld.get('tr').id)}" class="psttitle">${_gld.get('tr').title}</a><br /></div>
+<img src="@{Travel.getPostImage(_gld.get('tr').id)}" alt="${_gld.get('tr').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+
+<!-- myblog -->
+<div class="glidecontent">
+<div class="titledisplay"><a href="@{MyBlog.myBlog(_gld.get('bl').id)}" class="psttitle">${_gld.get('bl').title}</a><br /></div>
+<img src="@{MyBlog.getPostImage(_gld.get('bl').id)}" alt="${_gld.get('bl').title}" class="displayimage" onError="this.onerror=null;this.src='/public/images/background.png'"/>
+</div>
+
+</div>
+
+<div id="pageselect" class="glidecontenttoggler">
+<a href="#" class="prev">Prev</a> 
+<a href="#" class="toc">1</a>
+ <a href="#" class="toc">2</a>
+ <a href="#" class="toc">3</a>
+ <a href="#" class="toc">4</a>
+ <a href="#" class="toc">5</a>
+ <a href="#" class="toc">6</a>
+ <a href="#" class="toc">7</a>
+ <a href="#" class="toc">8</a>
+ <a href="#" class="toc">9</a>
+ <a href="#" class="toc">10</a>
+ <a href="#" class="toc">11</a>
+ <a href="#" class="toc">12</a>
+ <a href="#" class="toc">13</a>
+ <a href="#" class="toc">14</a>
+<a href="#" class="next">Next</a>
+</div>
+
+</div>

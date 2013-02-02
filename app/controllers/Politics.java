@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.persistence.Query;
 
+import models.BlogPost;
 import models.Comment;
 import models.Post;
 import models.User;
@@ -117,6 +118,7 @@ public class Politics extends Controller{
 	 List<PoliticsPost> recentPosts =PoliticsPost.find("order by postedAt desc").from(0).fetch(5);
 	 return recentPosts;
  }
+
  public static String getStarName(){
 		String sql= "SELECT id FROM User WHERE id IN ("+
 				 "SELECT author_id FROM politicsPost GROUP BY author_id"+

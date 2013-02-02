@@ -4,6 +4,7 @@ import play.*;
 import play.cache.Cache;
 import play.data.validation.Required;
 import play.db.jpa.Blob;
+import play.db.jpa.Model;
 import play.libs.Images;
 import play.mvc.*;
 
@@ -16,17 +17,38 @@ public class Application extends Controller {
 	
     public static void index() {
     	doInitialSetup();
+    	Map<String,Model> glide=new HashMap<String, Model>();
     	List<PoliticsPost> politics=Politics.getRecentFivePost();
+    	glide.put("po",politics.get(0));
     	List<DecisionPost> decision=Decision.getRecentFivePost();
-    	List<TravelPost> travel=Travel.getRecentFivePost();
-    	List<AutoPost> auto=Auto.getRecentFivePost();
+    	glide.put("de",decision.get(0));
+    	List<HealthPost> health=Health.getRecentFivePost();
+    	glide.put("he",health.get(0));
+    	List<FoodPost> food=Food.getRecentFivePost();
+    	glide.put("fo",food.get(0));
+    	List<BeautyPost> beauty=Beauty.getRecentFivePost();
+    	glide.put("be",beauty.get(0));
+    	List<MoneyPost> money=Money.getRecentFivePost();
+    	glide.put("mo",money.get(0));
+    	List<TechPost> tech=Tech.getRecentFivePost();
+    	glide.put("te",tech.get(0));
+    	List<SportPost> sport=Sport.getRecentFivePost();
+    	glide.put("sp",sport.get(0));
+    	List<JobPost> job=Job.getRecentFivePost();
+    	glide.put("jo",job.get(0));
     	List<Post> yourStory=YourStory.getRecentFivePost();
+    	glide.put("yo",yourStory.get(0));
     	List<MoviePost> movie=MovieReview.getRecentFivePost();
+    	glide.put("mr",movie.get(0));
+    	List<AutoPost> auto=Auto.getRecentFivePost();
+    	glide.put("au",auto.get(0));
+    	List<TravelPost> travel=Travel.getRecentFivePost();
+    	glide.put("tr",travel.get(0));
     	List<BlogPost> blog=MyBlog.getRecentFivePost();
-    	render(politics,decision,travel,auto,yourStory,movie,blog);
+    	glide.put("bl",blog.get(0));
+    	
+    	render(politics,decision,health,food,beauty,money,tech,sport,job,yourStory,movie,auto,travel,blog,glide);
     }
-    
-  
     /**
      * this should not be public or else it will be a action
      */

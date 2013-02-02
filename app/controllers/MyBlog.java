@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.BlogComment;
 import models.BlogPost;
+import models.MoviePost;
 import models.User;
 import play.cache.Cache;
 import play.data.validation.Required;
@@ -102,12 +103,9 @@ public class MyBlog extends Controller {
     	 jsObject.addProperty("postLikes",post.likes);
     	 renderJSON(jsObject.toString());
     }
- public static List<BlogPost> getLatestPost(){
-	 List<BlogPost> recentPosts =BlogPost.find("order by postedAt desc").from(0).fetch(2);
-	 return recentPosts;
- }
  public static List<BlogPost> getRecentFivePost(){
 	 List<BlogPost> recentPosts =BlogPost.find("order by postedAt desc").from(0).fetch(5);
 	 return recentPosts;
  }
+ 
 }
