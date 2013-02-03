@@ -50,7 +50,7 @@ public class JobPost extends Model{
 	    }
 	     
 	    public JobPost next() {
-	        return FoodPost.find("postedAt > ? order by postedAt asc", postedAt).first();
+	        return JobPost.find("postedAt > ? order by postedAt asc", postedAt).first();
 	    }
 	    
 	    public void addLike(){
