@@ -113,8 +113,8 @@ public class Travel extends Controller {
  }
  public static String getStarName(){
 		String sql= "SELECT id FROM User WHERE id IN ("+
-				 "SELECT author_id FROM travelpost GROUP BY author_id"+
-				 " HAVING COUNT(*) = (SELECT MAX(noofpost) from (SELECT COUNT(author_id) AS noofpost FROM travelpost GROUP BY author_id HAVING author_id!=1) AS ma)"+
+				 "SELECT author_id FROM TravelPost GROUP BY author_id"+
+				 " HAVING COUNT(*) = (SELECT MAX(noofpost) from (SELECT COUNT(author_id) AS noofpost FROM TravelPost GROUP BY author_id HAVING author_id!=1) AS ma)"+
 				 "AND author_id != 1) ORDER BY points desc LIMIT 1 ";
 		
 		 Query query = JPA.em().createNativeQuery(sql);
@@ -125,7 +125,7 @@ public class Travel extends Controller {
 		return star.fullname;
 	 }
 	 public static String getStarTotalPosts(){
-		 String sql="SELECT MAX(noofpost) from (SELECT COUNT(author_id) AS noofpost FROM travelpost GROUP BY author_id HAVING author_id!=1) AS ma";
+		 String sql="SELECT MAX(noofpost) from (SELECT COUNT(author_id) AS noofpost FROM TravelPost GROUP BY author_id HAVING author_id!=1) AS ma";
 		 Query query = JPA.em().createNativeQuery(sql);
 		 List<BigInteger> result =query.getResultList();
 		 BigInteger bigIntegerUserId=result.get(0);
