@@ -5,6 +5,9 @@
  #{googleAnalytics /}
 #{/set}
 <div class="sectionheading">My Blog</div>
+<div class="bannerad">
+#{bannerAdWide /}
+</div>
  #{if session.get("userid")}
         #{if 1==session.get("userid").toLong() }
  #{MyBlog/writeNewMyBlog /}

@@ -103,9 +103,9 @@ border:5px solid #00A2E8;
 
 #rightcolumn{
 float: right;
-width: 292px; /*Width of right column in pixels*/
+width:301px; /*Width of right column in pixels*/
 height:100%;
-margin-left: -292px; /*Set margin to -(RightColumnWidth)*/
+margin-left: -301px; /*Set margin to -(RightColumnWidth)*/
 background:white;
 border-width:2px;
 overflow: hidden;
@@ -678,6 +678,10 @@ color:#00A2E8 ;
 	color:#FF4500;
 	text-align: center;
 	padding-top:4px;
+	}
+	.bannerad{
+	padding:2px;
+	margin-top: 5px;
 	}
 	
 }
