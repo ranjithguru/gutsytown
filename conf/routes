@@ -94,7 +94,7 @@ GET     /previousMyBlog                               MyBlog.previousOldPosts
  
 GET     /captcha                                Application.captcha
 
-
+GET     /robots.txt                              staticFile:public/robots.txt
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
