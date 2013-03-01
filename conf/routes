@@ -95,6 +95,12 @@ GET     /previousMyBlog                               MyBlog.previousOldPosts
 GET     /captcha                                Application.captcha
 
 GET     /robots.txt                              staticFile:public/robots.txt
+
+GET     /sitemap.xml                              staticFile:public/sitemap.xml
+
+
+GET     /googledde813750b96acd6.html              staticFile:public/googledde813750b96acd6.html
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
