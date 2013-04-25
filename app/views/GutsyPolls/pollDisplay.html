@@ -1,0 +1,111 @@
+#{extends 'main.html' /}
+#{set title:poll.title /}
+#{set description: 'In this section there will be topics and options where you can cast your vote.' /}
+#{set 'moreScripts'}
+  #{googleAnalytics /}
+#{/set}
+<style>
+.question{
+font-family:cursive;
+width:100%;
+float:left;
+color:#00A2E8;
+padding:1px 1px 1px 1px;
+text-align: left;
+font-size: 18px;
+font-weight: bold;
+}
+.clickon{
+font-family:cursive;
+width:100%;
+float:left;
+color:#00A2E8;
+text-align: left;
+font-size: 16px;
+font-weight: normal;
+margin-top:5px;
+}
+.opt{
+display: inline;
+width: 100%;
+text-align: center;
+}
+form label {
+    display: inline;
+    font-weight: bold;
+    font-size: 90%;
+    color: #00A2E8;
+    margin-bottom: 5px;
+}
+
+    
+</style>
+<script>
+function validateRadioOptions (){
+var radioOptions=document.getElementsByName("option");
+    for (i = 0; i < radioOptions.length; ++ i)
+    {
+        if (radioOptions [i].checked) return true;
+    }
+    alert("One of the options should be selected for voting...");
+    return false;
+}
+</script>
+<div class="sectionheading">Gutsy Polls</div>
+<div class="bannerad">
+#{Advertise/bannerAdWide /}
+</div>
+#{if poll}
+<div class="question">
+Vote For ${poll.title}
+</div>
+<br />
+<br />
+<br />
+
+<div >
+ <form name="votingForm" action="@{GutsyPolls.vote(poll.id)}" method="POST" enctype="multipart/form-data" onsubmit="return validateRadioOptions()">  
+       <div class="opt">
+       <input type="radio" name="option" id="r1" value="1" />
+       <label for="r1"> ${poll.optOne}</label>
+        </div>
+        <br />
+        <br />
+        <div class="opt">
+        <input type="radio" name="option" id="r2" value="2" />
+        <label for="r2"> ${poll.optTwo}</label>
+        </div>
+        <br />
+        <br />
+         <div class="opt">
+       <input type="radio" name="option" id="r3" value="3" />
+       <label for="r3"> ${poll.optThree}</label>
+       </div>
+        <br />
+        <br />
+        <div class="opt">
+       <input type="radio" name="option" id="r4" value="4" />
+       <label for="r4">${poll.optFour}</label>
+       </div>
+        <br />
+        <br />
+        <div class="opt">
+       <input type="radio" name="option" id="r5" value="5" />
+       <label for="r5"> ${poll.optFive}</label>
+       </div>
+        <br />
+        <br />
+       <span class="clickon"></span>
+       <input class="nsubmit" type="submit" value="Vote"/>
+       </form>
+     </div>
+     <br />
+      <br />
+       <br />
+     <div>
+       <form name="viewResult" action="@{GutsyPolls.vote(poll.id)}" method="POST" enctype="multipart/form-data"> 
+       <span class="clickon"></span>
+       <input class="nsubmit" type="submit" value="View Result"/>
+        </form>
+         </div>
+#{/if}

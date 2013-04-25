@@ -88,6 +88,8 @@ GET     /previousMyBlog                               MyBlog.previousOldPosts
 
 
  GET     /gutsyPolls                                   GutsyPolls.gutsyPolls
+ GET     /polls                                      GutsyPolls.getPoll
+ POST    /vote                                       GutsyPolls.vote
  
  GET     /contact                                   Contact.contact
 

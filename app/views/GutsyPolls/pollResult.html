@@ -1,0 +1,153 @@
+#{extends 'main.html' /}
+#{set title:poll.title /}
+#{set description: 'In this section there will be topics and options where you can cast your vote.' /}
+#{set 'moreScripts'}
+  #{googleAnalytics /}
+#{/set}
+ <script src="@{'/public/javascripts/highcharts.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+  <script src="@{'/public/javascripts/exporting.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+  <style>
+  .question{
+font-family:cursive;
+width:100%;
+float:left;
+color:#00A2E8;
+padding:1px 1px 1px 1px;
+text-align: center;
+font-size: 18px;
+font-weight: bold;
+}
+.question1{
+font-family:cursive;
+width:100%;
+float:left;
+color:red;
+padding:1px 1px 1px 1px;
+text-align: left;
+font-size: 16px;
+font-weight: bold;
+}
+.redc{
+color: red;
+}
+  </style>
+  <div class="sectionheading">Gutsy Polls</div>
+  <div class="bannerad">
+#{Advertise/bannerAdWide /}
+</div>
+<script>
+$(function () {
+    $('#pollResultContainer').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text:'${poll.title}'
+        },
+        tooltip: {
+        	
+    	    pointFormat: '{series.name}: <b>{point.y}</b>',
+        	percentageDecimals: 1,
+        	yDecimals: 2
+        	
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    formatter: function() {
+                        return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Total Votes Secured:',
+            data: [
+                ['${poll.optOne}',   ${poll.optOneCount}],
+                {
+                    name: '${poll.optTwo}',
+                    y: ${poll.optTwoCount},
+                    sliced: true,
+                    selected: true
+                },
+                ['${poll.optThree}',${poll.optThreeCount}],
+                
+                ['${poll.optFour}',${poll.optFourCount}],
+                ['${poll.optFive}',  ${poll.optFiveCount}],
+            ]
+        }]
+    });
+});
+</script>
+
+<div class="question">
+ #{if poll.district=="karnataka"}
+      Result Display of ${poll.title} 
+                        #{/if}
+                        #{else}
+                        Result Display of ${poll.title}  Assembly Constituency
+                        #{/else}
+
+</div>
+<br />
+<br />
+<br />
+<div class="question1">
+Number Of Votes Secured By Each Candidate:
+</div>
+<br />
+ <form>
+  <label> ${poll.optOne}  : <span class="redc"> ${poll.optOneCount}</span></label> 
+  <label> ${poll.optTwo}  : <span class="redc"> ${poll.optTwoCount}</span></label> 
+  <label> ${poll.optThree} : <span class="redc"> ${poll.optThreeCount}</span></label> 
+  <label> ${poll.optFour}  : <span class="redc"> ${poll.optFourCount}</span></label> 
+  <label> ${poll.optFive}  : <span class="redc"> ${poll.optFiveCount}</span></label> 
+        </form>
+        <br />
+        <br />
+        <div class="question1">
+Chart Display Of Percentage Votes Secured By Each Candidate:
+</div>
+ <br />
+        <br />
+         <br />
+        <br />
+<div id="pollResultContainer" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<br />
+        <br />
+         <br />
+        <br />
+        <br />
+        <br />
+         <br />
+        <br />
+        <br />
+        <br />
+         <br />
+        <br />
+        <br />
+        <br />
+         <br />
+        <br />
+        <br />
+        <br />
+         <br />
+        <br />
+        <br />
+        <br />
+         <br />
+        <br />
+        <br />
+        <br />
+         <br />
+        <br />
+ 
+        
