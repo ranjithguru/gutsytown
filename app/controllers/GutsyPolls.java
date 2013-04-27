@@ -12,7 +12,7 @@ public class GutsyPolls extends Controller{
 	
 	public static void gutsyPolls() {
 		Application.doInitialSetup();
-		 List<Poll> pollList = Poll.find("order by postedAt desc").from(0).fetch(100);
+		 List<Poll> pollList = Poll.find("order by postedAt desc").fetch();
 		 render(pollList);
 	}
 public static void getPoll(Long id){
